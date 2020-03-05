@@ -55,6 +55,7 @@ Brief summary/description of the plugin.
 
         grailsApplication.serviceClasses.each { serviceClass ->
 
+
             if(AnnotationUtils.findAnnotation(serviceClass.clazz, CheckBeforeExecution.class) != null) {
 
                 serviceClass.metaClass.invokeMethod = { name, args ->
@@ -88,6 +89,8 @@ Brief summary/description of the plugin.
                 }
 
             }
+
+
         }
 
     }
