@@ -36,11 +36,13 @@
   [![Project Logo][project-logo]](https://example.com)
   
   
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">App Grails Commons</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Plugins que implementam funcionalidades legais para projetos Grails (4.x)!
     <br />
+    
+    <!--
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -49,6 +51,7 @@
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    -->
   </p>
 </p>
 
@@ -57,12 +60,12 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
+* [Sobre este projeto](#sobre-este-projeto)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
+  * [Prerequisitos](#prerequisites)
+  * [Instalação](#installation)
+* [Modo de uso](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -72,7 +75,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre este projeto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
