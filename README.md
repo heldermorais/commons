@@ -32,9 +32,9 @@
 <br />
 <p align="center">
 
-  <p align="center">
+  
   [![Project Logo][project-logo]](https://example.com)
-  </p>
+  
   
   <h3 align="center">Best-README-Template</h3>
 
