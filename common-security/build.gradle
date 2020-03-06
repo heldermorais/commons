@@ -8,10 +8,8 @@ buildscript {
     }
 }
 
-
 version "0.1"
-group "common.aop"
-
+group "common.security"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -57,7 +55,6 @@ dependencies {
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
-
 }
 
 bootRun {
@@ -96,6 +93,3 @@ grailsPublish {
 assets {
     packagePlugin = true
 }
-
-
-apply from: 'additional-dependencies.gradle'

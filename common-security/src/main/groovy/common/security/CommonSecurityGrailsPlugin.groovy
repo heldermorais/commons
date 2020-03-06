@@ -1,14 +1,8 @@
-package common.aop
+package common.security
 
-import common.aop.interceptors.CheckBeforeExecution
-import common.aop.interceptors.CheckedMethodInterceptor
 import grails.plugins.*
-import org.codehaus.groovy.reflection.CachedMethod
-import org.springframework.core.annotation.AnnotationUtils
 
-import java.lang.reflect.Method
-
-class CommonAopGrailsPlugin extends Plugin {
+class CommonSecurityGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "4.0.2 > *"
@@ -18,7 +12,7 @@ class CommonAopGrailsPlugin extends Plugin {
     ]
 
     // TODO Fill in these fields
-    def title = "Common Aop" // Headline display name of the plugin
+    def title = "Common Security" // Headline display name of the plugin
     def author = "Your name"
     def authorEmail = ""
     def description = '''\
@@ -27,7 +21,7 @@ Brief summary/description of the plugin.
     def profiles = ['web']
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/common-aop"
+    def documentation = "http://grails.org/plugin/common-security"
 
     // Extra (optional) plugin metadata
 
@@ -47,18 +41,12 @@ Brief summary/description of the plugin.
 //    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
 
     Closure doWithSpring() { {->
-
-            // Additional runtime spring config
-            checkedMethodInterceptor(CheckedMethodInterceptor){
-                //grailsApplication = ref("grailsApplication")
-            }
-
+            // TODO Implement runtime spring config (optional)
         }
     }
 
     void doWithDynamicMethods() {
         // TODO Implement registering dynamic methods to classes (optional)
-
     }
 
     void doWithApplicationContext() {

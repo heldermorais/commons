@@ -10,10 +10,27 @@ class HomeService {
 
     GrailsApplication grailsApplication
 
-    @CheckBeforeExecution(checker='Azzzz')
-    def hello() {
-        log.debug "     executing HomeService.hello()"
-        grailsApplication.mainContext.getBeansWithAnnotation()
+    @CheckBeforeExecution(checker='checker1Service')
+    def hello( String someoneName) {
+
+        log.debug "     executing HomeService.hello(${someoneName})"
+        //grailsApplication.mainContext.getBeansWithAnnotation()
+
     }
+
+    @CheckBeforeExecution(checker='checker1Service')
+    def hello2( String someoneElse) {
+
+        log.debug "     executing HomeService.hello(${someoneName})"
+        //grailsApplication.mainContext.getBeansWithAnnotation()
+
+    }
+
+
+    def helloUntraced() {
+        log.debug "     executing HomeService.helloUntraced()"
+        //grailsApplication.mainContext.getBeansWithAnnotation()
+    }
+
 
 }

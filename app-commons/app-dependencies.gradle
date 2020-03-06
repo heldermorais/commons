@@ -2,9 +2,8 @@ grails{
     plugins{
         compile project(':common-aop')
         compile project(':common-autoconfig')
+
+        compile project(':common-springsec')
     }
 }
 
-
-logging.captureStandardOutput LogLevel.DEBUG
-println 'A message which is logged at INFO level'
