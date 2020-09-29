@@ -1,11 +1,21 @@
 package app.commons
 
+import grails.core.GrailsApplication
+import grails.plugin.springsecurity.annotation.Secured
+
+
 class HomeController {
 
+
+    GrailsApplication grailsApplication
 
     HomeService homeService
 
     def index() {
+
+
+       boolean enabled = grailsApplication.config.common.autoconfig.enabled
+       log.info ("autoconfig.enabled = ${enabled}")
 
        homeService.hello("Helder")
        homeService.helloUntraced()

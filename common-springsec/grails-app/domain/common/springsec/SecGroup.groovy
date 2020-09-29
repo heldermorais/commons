@@ -7,14 +7,14 @@ import grails.compiler.GrailsCompileStatic
 @GrailsCompileStatic
 @EqualsAndHashCode(includes='name')
 @ToString(includes='name', includeNames=true, includePackage=false)
-class Group implements Serializable {
+class SecGroup implements Serializable {
 
 	private static final long serialVersionUID = 1
 
 	String name
 
-	Set<Role> getAuthorities() {
-		(GroupRole.findAllByGroup(this) as List<GroupRole>)*.role as Set<Role>
+	Set<SecRole> getAuthorities() {
+		(SecGroupSecRole.findAllBySecGroup(this) as List<SecGroupSecRole>)*.secRole as Set<SecRole>
 	}
 
 	static constraints = {

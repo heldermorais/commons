@@ -1,12 +1,13 @@
 package app.commons.aop.checkers
 
-import common.aop.interceptors.GenericMethodExecutionChecker
+//import common.aop.interceptors.GenericMethodExecutionChecker
 import grails.gorm.transactions.Transactional
-import org.apache.commons.chain.Context
+//import org.apache.commons.chain.Context
 
 @Transactional
-class Checker1Service extends GenericMethodExecutionChecker {
+class Checker1Service {//extends GenericMethodExecutionChecker {
 
+    /*
     @Override
     boolean execute(Context context) throws Exception {
         context.keySet().each {String key ->
@@ -19,4 +20,6 @@ class Checker1Service extends GenericMethodExecutionChecker {
         }
         return super.execute(context)
     }
+    */
+
 }

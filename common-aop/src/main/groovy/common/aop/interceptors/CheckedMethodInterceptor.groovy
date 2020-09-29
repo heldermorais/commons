@@ -43,11 +43,13 @@ class CheckedMethodInterceptor {
         Chain checker = grailsApplication.mainContext.getBean(myAnnotation.checker())
         Context executionContext = new ContextBase()
         executionContext.put("joinPoint", joinPoint)
+
         int i = 0
-signature.getParameterNames().each{ String parameterName ->
-    executionContext.put(parameterName, joinPoint.getArgs()[i])
-    i++
-}
+        signature.getParameterNames().each{ String parameterName ->
+            executionContext.put(parameterName, joinPoint.getArgs()[i])
+            i++
+        }
+
         boolean resultado = checker.execute(executionContext)
         //Proceed with method execution
         joinPoint.proceed()

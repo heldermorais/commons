@@ -93,3 +93,5 @@ grailsPublish {
 assets {
     packagePlugin = true
 }
+
+apply from: 'additional-dependencies.gradle'

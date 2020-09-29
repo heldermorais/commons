@@ -1,7 +1,12 @@
 package common.autoconfig
 
+
+import grails.core.GrailsApplication
 import grails.util.Environment
 import groovy.util.logging.Slf4j
+import org.apache.commons.chain.Command
+import org.apache.commons.chain.Context
+import org.apache.commons.chain.impl.ContextBase
 import org.grails.config.PropertySourcesConfig
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.SpringApplicationRunListener
@@ -25,6 +30,10 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
         log.debug "AutoconfigRunListener - CREATED"
 
     }
+
+
+    GrailsApplication grailsApplication
+
 
     @Override
     void starting() {
@@ -78,6 +87,31 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
     @Override
     void started(ConfigurableApplicationContext context) {
+
+        this.grailsApplication = context.getBean('grailsApplication')
+        log.debug ("Grails Application : ${grailsApplication}")
+        String[] autorunBeanNames = context.getBeanNamesForAnnotation(Autorun)
+
+        Context chainContext = new ContextBase();
+        chainContext.put("grailsContext", context)
+        chainContext.put("grailsApplication", this.grailsApplication)
+
+        for (String autorunBeanName in autorunBeanNames){
+           this.executeAutorunOn(autorunBeanName, context.getBean(autorunBeanName), chainContext)
+        }
+
+    }
+
+    protected executeAutorunOn ( String autorunBeanName, Object autorunBean , Context chainContext ){
+
+        log.debug "AutoRun ${autorunBeanName} - BEGIN"
+
+        if (autorunBean instanceof Command){
+            Command cmd = (Command) autorunBean
+            cmd.execute(chainContext)
+        }
+
+        log.debug "AutoRun ${autorunBeanName} - END"
 
     }
 

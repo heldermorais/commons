@@ -9,7 +9,7 @@ import grails.compiler.GrailsCompileStatic
 @GrailsCompileStatic
 @EqualsAndHashCode(includes=['configAttribute', 'httpMethod', 'url'])
 @ToString(includes=['configAttribute', 'httpMethod', 'url'], cache=true, includeNames=true, includePackage=false)
-class RequestMap implements Serializable {
+class SecRequestmap implements Serializable {
 
 	private static final long serialVersionUID = 1
 

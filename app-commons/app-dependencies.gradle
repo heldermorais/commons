@@ -1,9 +1,11 @@
 grails{
     plugins{
-        compile project(':common-aop')
-        compile project(':common-autoconfig')
 
+        //compile project(':common-aop')
+
+        compile project(':common-autoconfig')
         compile project(':common-springsec')
+
     }
 }
 

@@ -14,13 +14,14 @@ class BootStrap {
         log.debug("Bootstrap.init - BEGIN")
 
 
-        for (String url in [
-                '/', '/error', '/index', '/index.gsp', '/**/favicon.ico', '/shutdown',
-                '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**',
-                '/login', '/login.*', '/login/*',
-                '/logout', '/logout.*', '/logout/*']) {
-            new RequestMap(url: url, configAttribute: 'permitAll').save()
-        }
+//        for (String url in [
+//                '/', '/error', '/index', '/index.gsp', '/**/favicon.ico', '/shutdown',
+//                '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**',
+//                '/login', '/login.*', '/login/*',
+//                '/logout', '/logout.*', '/logout/*']) {
+//            new RequestMap(url: url, configAttribute: 'permitAll').save()
+//        }
+
 
 //        new RequestMap(url: '/profile/**',    configAttribute: 'ROLE_USER').save()
 //        new RequestMap(url: '/admin/**',      configAttribute: 'ROLE_ADMIN').save()
