@@ -1,14 +1,18 @@
 package common.springsec
 
-import common.autoconfig.Autorun
+import common.autorun.Autorun
+import common.autorun.GenericAutorunService
 import grails.core.GrailsApplication
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
-import org.apache.commons.chain.Command
+import groovy.util.logging.Slf4j
 import org.apache.commons.chain.Context
+import org.springframework.core.Ordered
 
 @Transactional
-class SpringsecCommonConfigService implements Command {
+@Autorun
+@Slf4j
+class SpringsecCommonConfigService extends GenericAutorunService {
 
 
     SpringSecurityService springSecurityService
@@ -17,7 +21,7 @@ class SpringsecCommonConfigService implements Command {
 
     @Override
     boolean execute(Context context) throws Exception {
-        log.debug("Bootstrap.init - BEGIN")
+        log.debug("SpringsecCommonConfigService - BEGIN")
 
         SecRole role_admin = SecRole.get(1)
         if(role_admin == null){
@@ -65,19 +69,15 @@ class SpringsecCommonConfigService implements Command {
         }
 
 
-//        new RequestMap(url: '/profile/**',    configAttribute: 'ROLE_USER').save()
-//        new RequestMap(url: '/admin/**',      configAttribute: 'ROLE_ADMIN').save()
-//        new RequestMap(url: '/admin/role/**', configAttribute: 'ROLE_SUPERVISOR').save()
-//        new RequestMap(url: '/admin/user/**',
-//                configAttribute: 'ROLE_ADMIN,ROLE_SUPERVISOR').save()
-//        new RequestMap(url: '/login/impersonate',
-//                configAttribute: 'ROLE_SWITCH_USER,IS_AUTHENTICATED_FULLY').save()
-
-
         springSecurityService.clearCachedRequestmaps()
 
-        log.debug("Bootstrap.init - END")
+        log.debug("SpringsecCommonConfigService - END")
 
         return false
+    }
+
+    @Override
+    int getOrder() {
+        return Ordered.LOWEST_PRECEDENCE + 10000
     }
 }

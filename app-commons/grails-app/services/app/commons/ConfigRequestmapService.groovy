@@ -1,27 +1,30 @@
 package app.commons
 
-import common.autoconfig.Autorun
+import common.autorun.Autorun
+import common.autorun.GenericAutorunService
 import common.springsec.SecGroup
 import common.springsec.SecRequestmap
 import common.springsec.SecUser
 import common.springsec.SecUserSecGroup
-import common.springsec.SpringsecCommonConfigService
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
-import org.apache.commons.chain.Command
+import groovy.util.logging.Slf4j
 import org.apache.commons.chain.Context
+import org.springframework.core.Ordered
 
 @Transactional
+@Slf4j
 @Autorun
-class ConfigRequestmapService implements Command {
+class ConfigRequestmapService extends GenericAutorunService {
 
     SpringSecurityService springSecurityService
-    SpringsecCommonConfigService springsecCommonConfigService
+//    SpringsecCommonConfigService springsecCommonConfigService
+
     @Override
     boolean execute(Context context) throws Exception {
 
-        log.info("Bootstrap - BEGIN")
-        springsecCommonConfigService.execute(context)
+        log.info("on App - ConfigRequestmapService - BEGIN")
+//        springsecCommonConfigService.execute(context)
 
         new SecRequestmap(url: '/home/**',    configAttribute: 'ROLE_ADMIN').save(flush: true)
 
@@ -34,9 +37,14 @@ class ConfigRequestmapService implements Command {
             SecUserSecGroup.create(plainUser, group_users)
         }
 
-        log.info("Bootstrap - END")
+        log.info("on App - ConfigRequestmapService - END")
         springSecurityService.clearCachedRequestmaps()
 
         return false
+    }
+
+    @Override
+    int getOrder() {
+        return Ordered.LOWEST_PRECEDENCE + 20000
     }
 }

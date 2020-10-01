@@ -3,7 +3,6 @@ package common.autoconfig
 
 import grails.core.GrailsApplication
 import grails.util.Environment
-import groovy.util.logging.Slf4j
 import org.apache.commons.chain.Command
 import org.apache.commons.chain.Context
 import org.apache.commons.chain.impl.ContextBase
@@ -20,14 +19,13 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.core.io.support.ResourcePatternResolver
 
 
-@Slf4j
 class AutoconfigRunListener implements SpringApplicationRunListener {
 
     protected ResourceLoader defaultResourceLoader = new DefaultResourceLoader()
 
     AutoconfigRunListener(SpringApplication application, String[] args) {
 
-        log.debug "AutoconfigRunListener - CREATED"
+        println "AutoconfigRunListener - CREATED"
 
     }
 
@@ -43,7 +41,7 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
     @Override
     void environmentPrepared(ConfigurableEnvironment environment) {
 
-        log.debug "AutoconfigRunListener - environmentPrepared - BEGIN"
+        println "AutoconfigRunListener - environmentPrepared - BEGIN"
 
         //List locations = environment.getProperty('grails.config.locations', List, [])
         // See if grails.config.locations is defined in an environments block like 'development' or 'test'
@@ -58,10 +56,10 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
         ClassLoader cl = this.getClass().getClassLoader();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
-        Resource[] foundResources = resolver.getResources("classpath:autoconfig/**/*.groovy") ;
+        Resource[] foundResources = resolver.getResources("classpath*:autoconfig/**/*.groovy") ;
         for (Resource res: foundResources){
 
-            log.info(">>> Found autoconfig file: [${res.getFilename()}]");
+            println(">>> Found autoconfig file: [${res.getFilename()}, ${res.getURL()}]");
             //Resource resource = defaultResourceLoader.getResource("classpath:/auto/config/CustomSecurityConfig.groovy")
             propertySource = loadGroovyConfig(res, encoding, currentProperties)
 
@@ -71,7 +69,7 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
         }
 
-        log.debug "AutoconfigRunListener - environmentPrepared - END"
+        println "AutoconfigRunListener - environmentPrepared - END"
 
     }
 
@@ -88,30 +86,30 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
     @Override
     void started(ConfigurableApplicationContext context) {
 
-        this.grailsApplication = context.getBean('grailsApplication')
-        log.debug ("Grails Application : ${grailsApplication}")
-        String[] autorunBeanNames = context.getBeanNamesForAnnotation(Autorun)
-
-        Context chainContext = new ContextBase();
-        chainContext.put("grailsContext", context)
-        chainContext.put("grailsApplication", this.grailsApplication)
-
-        for (String autorunBeanName in autorunBeanNames){
-           this.executeAutorunOn(autorunBeanName, context.getBean(autorunBeanName), chainContext)
-        }
+//        this.grailsApplication = context.getBean('grailsApplication')
+//        log.debug ("Grails Application : ${grailsApplication}")
+//        String[] autorunBeanNames = context.getBeanNamesForAnnotation(Autorun)
+//
+//        Context chainContext = new ContextBase();
+//        chainContext.put("grailsContext", context)
+//        chainContext.put("grailsApplication", this.grailsApplication)
+//
+//        for (String autorunBeanName in autorunBeanNames){
+//           this.executeAutorunOn(autorunBeanName, context.getBean(autorunBeanName), chainContext)
+//        }
 
     }
 
     protected executeAutorunOn ( String autorunBeanName, Object autorunBean , Context chainContext ){
 
-        log.debug "AutoRun ${autorunBeanName} - BEGIN"
+        //log.debug "AutoRun ${autorunBeanName} - BEGIN"
 
         if (autorunBean instanceof Command){
             Command cmd = (Command) autorunBean
             cmd.execute(chainContext)
         }
 
-        log.debug "AutoRun ${autorunBeanName} - END"
+        //log.debug "AutoRun ${autorunBeanName} - END"
 
     }
 
@@ -129,7 +127,7 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
     // Load groovy config from resource
     private MapPropertySource loadGroovyConfig(Resource resource, String encoding, Map currentConfig) {
-        log.info("    Loading groovy config file properties {}", resource.URI)
+        //log.info("    Loading groovy config file properties {}", resource.URI)
         String configText = resource.inputStream.getText(encoding)
         ConfigSlurper slurper = new ConfigSlurper(Environment.current.name)
         WriteFilteringMap filterMap = new WriteFilteringMap(currentConfig)

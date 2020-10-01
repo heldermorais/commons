@@ -2,6 +2,7 @@ include 'app-commons'
 
 //include 'common-aop'
 include 'common-autoconfig'
+include 'common-autorun'
 include 'common-springsec'
 
 //include 'common-security'

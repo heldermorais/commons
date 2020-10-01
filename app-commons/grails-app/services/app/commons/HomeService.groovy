@@ -1,7 +1,4 @@
 package app.commons
-
-import common.autoconfig.Autorun
-
 //import common.aop.interceptors.CheckBeforeExecution
 import grails.core.GrailsApplication
 import grails.gorm.transactions.Transactional
@@ -9,7 +6,6 @@ import org.apache.commons.chain.Command
 import org.apache.commons.chain.Context
 
 @Transactional
-@Autorun
 class HomeService implements Command {
 
 
