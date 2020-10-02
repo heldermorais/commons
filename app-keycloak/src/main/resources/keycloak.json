@@ -1,0 +1,10 @@
+{
+  "realm": "grails-realm",
+  "auth-server-url": "http://localhost:58080/auth/",
+  "ssl-required": "external",
+  "resource": "app-keycloak",
+  "credentials": {
+    "secret": "710be279-e2e8-4d2a-8adb-9059b88ff448"
+  },
+  "confidential-port": 0
+}

@@ -1,8 +1,13 @@
 include 'app-commons'
 
-//include 'common-aop'
+
 include 'common-autoconfig'
 include 'common-autorun'
+include 'common-events'
 include 'common-springsec'
 
+//include 'common-aop'
 //include 'common-security'
+
+
+include 'app-keycloak'
