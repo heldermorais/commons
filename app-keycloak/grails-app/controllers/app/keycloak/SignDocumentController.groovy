@@ -12,6 +12,22 @@ class SignDocumentController {
 
     def index() {
 
+        // create a new instance based on the configuration defined in keycloak.json
+        AuthzClient authzClient = AuthzClient.create();
+
+// create an authorization request
+        AuthorizationRequest request = new AuthorizationRequest();
+
+// send the entitlement request to the server in order to
+// obtain an RPT with all permissions granted to the user
+        AuthorizationResponse response = authzClient.authorization("grails.user", "abc123").authorize()
+        String rpt = response.getToken();
+
+
+        System.out.println("You got an RPT: " + rpt);
+
+render view: 'index'
+
     }
 
     def doSign(){
@@ -22,21 +38,11 @@ class SignDocumentController {
         if (principal instanceof KeycloakAuthenticationToken) {
             KeycloakPrincipal kp = ((KeycloakAuthenticationToken)  principal).getPrincipal()
 
-            // this is how to get the real userName (or rather the login name)
-            //useName = kp.getKeycloakSecurityContext().authorizationContext.getIdToken().getPreferredUsername()
         }
 
-//
-//        Keycloak keycloak = KeycloakBuilder.builder()
-//                .serverUrl("https://sso.example.com/auth")
-//                .realm("realm")
-//                .username("user")
-//                .password("pass")
-//                .clientId("client")
-//                .clientSecret("secret")
-//                .resteasyClient(new ResteasyClientBuilder().connectionPoolSize(20).build())
-//                .build();
-//
+
+
+
         System.out.println("You got an RPT: " + rpt);
     }
 }

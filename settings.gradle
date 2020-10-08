@@ -10,4 +10,4 @@ include 'common-springsec'
 //include 'common-security'
 
 
-include 'app-keycloak'
+include 'app-keycloak', 'app-keycloak2'

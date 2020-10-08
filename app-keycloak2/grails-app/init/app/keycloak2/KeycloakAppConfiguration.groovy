@@ -1,4 +1,4 @@
-package app.keycloak
+package app.keycloak2
 
 import org.keycloak.adapters.KeycloakConfigResolver
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver

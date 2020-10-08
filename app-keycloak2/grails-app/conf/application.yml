@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: app.keycloak
+        defaultPackage: app.keycloak2
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
@@ -136,12 +136,18 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
+---
+
+server:
+    port: 16080
+
+---
 keycloak:
     realm: grails-realm
-    resource: app-keycloak3
+    resource: app-keycloak2
     auth-server-url: http://localhost:58080/auth
     ssl-required: external
 #    public-client: true
     credentials:
-        secret: f2f0576c-deff-49b5-a5c1-9e00449d1013
+          secret: 0bbd5d0a-2a06-484f-b175-0047f59c62ac
     confidential-port: 0

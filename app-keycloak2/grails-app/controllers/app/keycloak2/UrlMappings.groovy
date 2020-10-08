@@ -1,4 +1,4 @@
-package app.keycloak
+package app.keycloak2
 
 class UrlMappings {
 
@@ -12,7 +12,5 @@ class UrlMappings {
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
-        "401"(view:'/error')
-        "403"(view:'/error')
     }
 }
