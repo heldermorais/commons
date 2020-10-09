@@ -56,7 +56,12 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
         ClassLoader cl = this.getClass().getClassLoader();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
-        Resource[] foundResources = resolver.getResources("classpath*:autoconfig/**/*.groovy") ;
+        Resource[] foundResources = resolver.getResources("classpath*:autoconfig/**/*.groovy")
+
+        foundResources = foundResources.sort {
+                    it.getFilename()
+                }
+
         for (Resource res: foundResources){
 
             println(">>> Found autoconfig file: [${res.getFilename()}, ${res.getURL()}]");
@@ -128,8 +133,8 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
     // Load groovy config from resource
     private MapPropertySource loadGroovyConfig(Resource resource, String encoding, Map currentConfig) {
         //log.info("    Loading groovy config file properties {}", resource.URI)
-        String configText = resource.inputStream.getText(encoding)
-        ConfigSlurper slurper = new ConfigSlurper(Environment.current.name)
+        String configText           = resource.inputStream.getText(encoding)
+        ConfigSlurper slurper       = new ConfigSlurper(Environment.current.name)
         WriteFilteringMap filterMap = new WriteFilteringMap(currentConfig)
         slurper.binding = filterMap
         ConfigObject configObject = slurper.parse(configText)

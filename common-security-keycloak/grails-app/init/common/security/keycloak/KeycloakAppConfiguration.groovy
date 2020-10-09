@@ -60,9 +60,29 @@ class KeycloakAppConfiguration extends KeycloakWebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+
                 .antMatchers("/").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/h2-console/login.do/**").permitAll()
+
+
+//        [pattern: '/',               access: ['permitAll']],
+//        [pattern: '/error',          access: ['permitAll']],
+//        [pattern: '/index',          access: ['permitAll']],
+//        [pattern: '/home/**',           access: ['permitAll']],
+//        [pattern: '/db-console/**',     access: ['permitAll']],
+//        [pattern: '/h2-console/**',     access: ['permitAll']],
+//        [pattern: '/index.gsp',      access: ['permitAll']],
+//        [pattern: '/shutdown',       access: ['permitAll']],
+
+//        [pattern: '/assets/**',      access: ['permitAll']],
+//        [pattern: '/**/js/**',       access: ['permitAll']],
+//        [pattern: '/**/css/**',      access: ['permitAll']],
+//        [pattern: '/**/images/**',   access: ['permitAll']],
+//        [pattern: '/**/favicon.ico', access: ['permitAll']]
+
                 //.antMatchers("/signDocument").permitAll()
-                .antMatchers("/home/**").hasAuthority('ROLE_KC_USER')
+                //.antMatchers("/home/**").hasAuthority('ROLE_KC_USER')
 
 //                .antMatchers("/api/user-info").hasAuthority(USER)
 //                .antMatchers("/api/products").hasAuthority(USER)

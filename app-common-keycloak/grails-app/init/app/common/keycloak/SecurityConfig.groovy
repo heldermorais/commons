@@ -12,12 +12,12 @@ class SecurityConfig extends KeycloakAppConfiguration {
         super.configure(http)
 
         http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
-        //.antMatchers("/signDocument").permitAll()
+            .authorizeRequests()
                 .antMatchers("/home/**").hasAuthority('ROLE_KC_USER')
                 .antMatchers("/other/**").hasAuthority('ROLE_KC_ADMIN')
+                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/h2-console/login.do/**").permitAll()
 
     }
+
 }

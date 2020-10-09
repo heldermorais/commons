@@ -95,4 +95,4 @@ assets {
 }
 
 
-apply from: 'additional-dependencies.gradle'
+apply from: 'ext-deps.gradle'
