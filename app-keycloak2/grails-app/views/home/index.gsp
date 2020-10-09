@@ -35,9 +35,17 @@
     </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu dropdown-menu-right">
             <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
                 <li class="dropdown-item"><a href="#">${plugin.name} - ${plugin.version}</a></li>
+            </g:each>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Keycloak Config <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <g:each var="keycloak" in="${keycloakConfigs}">
+                <li class="dropdown-item"><a href="#">${keycloak.name} - ${keycloak.value}</a></li>
             </g:each>
         </ul>
     </li>

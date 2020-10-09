@@ -13,7 +13,6 @@ dependencies{
     // Keycloak
     implementation 'org.keycloak:keycloak-spring-boot-starter'
 
-
 }
 
 dependencyManagement {

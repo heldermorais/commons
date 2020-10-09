@@ -11,8 +11,6 @@
 
     <asset:stylesheet src="application.css"/>
 
-    <script src="http://localhost:58080/auth/js/keycloak.js"></script>
-
     <g:layoutHead/>
 </head>
 
@@ -68,19 +66,6 @@
 
 <asset:javascript src="application.js"/>
 
-<script>
-    var keycloak = new Keycloak({
-            url: "http://localhost:58080/auth/",
-            realm: 'grails-realm',
-            clientId: 'app-keycloak2'
-        }
-    );
-    keycloak.init().then(function(authenticated) {
-        alert(authenticated ? 'authenticated' : 'not authenticated');
-    }).catch(function() {
-        alert('failed to initialize');
-    });
-</script>
 
 </body>
 </html>
