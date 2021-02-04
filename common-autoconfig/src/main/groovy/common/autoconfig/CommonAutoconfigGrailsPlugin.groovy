@@ -5,7 +5,7 @@ import grails.plugins.*
 class CommonAutoconfigGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "4.0.4 > *"
+    def grailsVersion = "5.0.0.M1 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -13,7 +13,7 @@ class CommonAutoconfigGrailsPlugin extends Plugin {
 
     // TODO Fill in these fields
     def title = "Common Autoconfig" // Headline display name of the plugin
-    def author = "Helder Morais (helder.morais@gmail.com"
+    def author = "Your name"
     def authorEmail = ""
     def description = '''\
 Brief summary/description of the plugin.
