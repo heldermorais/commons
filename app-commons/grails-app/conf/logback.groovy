@@ -16,6 +16,10 @@ appender('STDOUT', ConsoleAppender) {
         pattern =
                 '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} ' + // Date
                         '%clr(%5p) ' + // Log level
+                        '%clr(%X{SESSION_ID}) ' + // HTTP Session
+                        '%clr(%X{USERNAME_ID}) ' + // Usuario (Logado)
+                        '%clr(%X{req.remoteHost}) ' + // IP CLiente
+                        '%clr(%X{req.requestURI}) ' + // URI
                         '%clr(---){faint} %clr([%15.15t]){faint} ' + // Thread
                         '%clr(%-40.40logger{39}){cyan} %clr(:){faint} ' + // Logger
                         '%m%n%wex' // Message
@@ -34,4 +38,12 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+
+
 root(ERROR, ['STDOUT'])
+
+logger 'app',DEBUG, ['STDOUT'], false
+logger 'sidecar',DEBUG, ['STDOUT'], false
+
+logger 'common.autoconfig',DEBUG, ['STDOUT'], false
+logger 'common.autorun',DEBUG, ['STDOUT'], false
