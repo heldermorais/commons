@@ -1,8 +1,10 @@
 package common.autoconfig
 
-
+import grails.compiler.GrailsCompileStatic
 import grails.core.GrailsApplication
 import grails.util.Environment
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 import groovy.util.logging.Slf4j
 import org.apache.commons.chain.Command
 import org.apache.commons.chain.Context
@@ -19,6 +21,8 @@ import org.springframework.core.io.ResourceLoader
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.core.io.support.ResourcePatternResolver
 
+
+@CompileStatic
 @Slf4j
 class AutoconfigRunListener implements SpringApplicationRunListener {
 
@@ -59,7 +63,7 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
         Resource[] foundResources = resolver.getResources("classpath*:autoconfig/**/*.groovy")
 
-        log.debug "AutoconfigRunListener - searching for autoconfig files like {\"classpath*:autoconfig/**/*.groovy\"} - BEGIN"
+        log.debug "AutoconfigRunListener - Searching autoconfigFiles like {classpath*:autoconfig/**/*.groovy} ..."
 
         foundResources = foundResources.sort {
                     it.getFilename()
@@ -133,8 +137,10 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
 
 
-    // Load groovy config from resource
+
+    @CompileStatic(TypeCheckingMode.SKIP)
     private MapPropertySource loadGroovyConfig(Resource resource, String encoding, Map currentConfig) {
+
         //log.info("    Loading groovy config file properties {}", resource.URI)
         String configText           = resource.inputStream.getText(encoding)
         ConfigSlurper slurper       = new ConfigSlurper(Environment.current.name)
@@ -144,7 +150,10 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
         Map properties = configText ? configObject?.flatten() : [:]
         Map writtenValues = filterMap.getWrittenValues()
         properties.putAll(writtenValues)
-        new MapPropertySource(resource.filename, properties)
+
+
+        return new MapPropertySource(resource.filename.toString(), properties)
+
     }
 
 

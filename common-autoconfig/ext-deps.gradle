@@ -5,4 +5,8 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-chain/commons-chain
     compile group: 'commons-chain', name: 'commons-chain', version: '1.2'
 
+    //compile 'org.grails.plugins:gorm-tools:7.0.8-v.8'
+
+    compile "org.springframework.boot:spring-boot-starter-aop"
+
 }

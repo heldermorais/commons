@@ -1,3 +1,6 @@
 include 'app-commons'
 
 include 'common-autoconfig'
+
+
+include 'sidecar'

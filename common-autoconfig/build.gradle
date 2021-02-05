@@ -8,7 +8,7 @@ buildscript {
     }
 }
 
-version "0.1"
+version "$commonsVersion"
 group "common.autoconfig"
 
 apply plugin:"eclipse"
@@ -98,3 +98,6 @@ grailsPublish {
 assets {
     packagePlugin = true
 }
+
+
+apply from: 'ext-deps.gradle'
