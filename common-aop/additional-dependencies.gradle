@@ -1,7 +1,0 @@
-dependencies {
-    compile "org.springframework.boot:spring-boot-starter-aop"
-
-    // https://mvnrepository.com/artifact/commons-chain/commons-chain
-    compile group: 'commons-chain', name: 'commons-chain', version: '1.2'
-
-}
