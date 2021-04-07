@@ -1,6 +1,7 @@
 package common.autoconfig
 
 import common.autorun.AutorunApplicationListener
+import common.events.CustomSpringEventPublisher
 import grails.plugins.*
 
 class CommonAutoconfigGrailsPlugin extends Plugin {
@@ -45,7 +46,7 @@ Brief summary/description of the plugin.
             // TODO Implement runtime spring config (optional)
 
             autorunApplicationListener(AutorunApplicationListener)
-
+            customSpringEventPublisher(CustomSpringEventPublisher)
         }
     }
 

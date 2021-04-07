@@ -8,6 +8,6 @@ grails{
 
         //compile project(':common-springsec')
 
-        compile project(':sidecar')
+        //compile project(':sidecar')
     }
 }

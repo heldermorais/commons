@@ -8,13 +8,12 @@
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../ProgramData/chocolatey/lib/gradle/tools/gradle-5.2.1" />
+        <option name="gradleHome" value="$USER_HOME$/ProgramData/chocolatey/lib/gradle/tools/gradle-5.2.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app-commons" />
             <option value="$PROJECT_DIR$/common-autoconfig" />
-            <option value="$PROJECT_DIR$/sidecar" />
           </set>
         </option>
       </GradleProjectSettings>

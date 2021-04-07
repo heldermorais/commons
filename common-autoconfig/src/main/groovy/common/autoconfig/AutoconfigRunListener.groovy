@@ -8,7 +8,6 @@ import groovy.transform.TypeCheckingMode
 import groovy.util.logging.Slf4j
 import org.apache.commons.chain.Command
 import org.apache.commons.chain.Context
-import org.apache.commons.chain.impl.ContextBase
 import org.grails.config.PropertySourcesConfig
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.SpringApplicationRunListener
