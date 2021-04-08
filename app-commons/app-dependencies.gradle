@@ -1,0 +1,7 @@
+grails{
+    plugins{
+        implementation project(':commons-autoconfig')
+        implementation project(':commons-springsec')
+        implementation project(':module-sidecar')
+    }
+}

@@ -36,29 +36,18 @@
   [![Project Logo][project-logo]](https://example.com)
   
   
-  <h3 align="center">App Grails Commons</h3>
+  <h3 align="center">Commons Libraries for Grails4   (_v4.0.9_)</h3>
 
   <p align="center">
-    Plugins que implementam funcionalidades legais para projetos Grails (4.x)!
+    Coleção de plugins Grails que implementam funcionalidades comuns para seus projetos!
     <br />
-    
-    <!--
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-    -->
   </p>
 </p>
 
 
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+## Comece por aqui...
 
 * [Sobre este projeto](#sobre-este-projeto)
   * [Built With](#built-with)
@@ -79,7 +68,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+Em um projeto Grails, o framework entrega várias funcionalidades focadas em ajudar o desenvolvedor a produzir uma aplicação robusta de maneira fácil e rápida.
+No entanto, após desenvolver alguns projetos, um conjunto de funcionalidades de mais alto nível pode ser notado como comum a todas elas.
+É aí que esta biblioteca de plugins se encaixa, provendo blocos de construção de mais alto nível para "use cases" mais frequentes ou simplesmente adicionar um caso de uso "de prateleira",
+como adicionar Vue, segurança, Logging e Auditoria, etc ...
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others

@@ -1,0 +1,3 @@
+dependencies {
+    implementation 'org.grails.plugins:spring-security-core:4.0.3'
+}
