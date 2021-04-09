@@ -22,6 +22,8 @@ Brief summary/description of the plugin.
 '''
     def profiles = ['web']
 
+    List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore', 'commonsAutoconfig']
+
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-springsec"
 
@@ -44,36 +46,42 @@ Brief summary/description of the plugin.
 
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
-            log.debug ""
-        }
+            log.debug "doWithSpring"
+
+        passwordEncoderFactory (DefaultPasswordEncoderFactory)
+        passwordEncoder(passwordEncoderFactory: 'buildPasswordEncoder')
+        //passwordEncoder(DefaultPasswordEncoder)
+
+        secUserPasswordEncoderListener(SecUserPasswordEncoderListener)
+    }
     }
 
     void doWithDynamicMethods() {
         // TODO Implement registering dynamic methods to classes (optional)
-        log.debug ""
+        log.debug "doWithDynamicMethods"
     }
 
     void doWithApplicationContext() {
         // TODO Implement post initialization spring config (optional)
-        log.debug ""
+        log.debug "doWithApplicationContext"
     }
 
     void onChange(Map<String, Object> event) {
         // TODO Implement code that is executed when any artefact that this plugin is
         // watching is modified and reloaded. The event contains: event.source,
         // event.application, event.manager, event.ctx, and event.plugin.
-        log.debug ""
+        log.debug "onChange"
     }
 
     void onConfigChange(Map<String, Object> event) {
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
 
-        log.debug ""
+        log.debug "onConfigChange"
     }
 
     void onShutdown(Map<String, Object> event) {
         // TODO Implement code that is executed when the application shuts down (optional)
-        log.debug ""
+        log.debug "onShutdown"
     }
 }

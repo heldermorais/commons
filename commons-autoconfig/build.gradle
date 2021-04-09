@@ -37,11 +37,6 @@ dependencies {
     testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
-
-
-    // https://mvnrepository.com/artifact/com.google.auto.service/auto-service
-    implementation group: 'com.google.auto.service', name: 'auto-service', version: '1.0'
-
 }
 
 bootRun {

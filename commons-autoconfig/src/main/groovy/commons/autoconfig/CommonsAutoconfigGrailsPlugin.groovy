@@ -25,6 +25,8 @@ Brief summary/description of the plugin.
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-autoconfig"
 
+    List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore']
+
     // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
