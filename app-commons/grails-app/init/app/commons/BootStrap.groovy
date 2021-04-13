@@ -16,6 +16,11 @@ class BootStrap {
         log.debug "bootstrap APP..."
         initSpringSecDBService.execute()
 
+        AppSecUser user1 = new AppSecUser(username: 'user1', password: 'abc123', fullName: 'User 1')
+        initSpringSecDBService.saveAsAdmin(user1)
+
+        AppSecUser user2 = new AppSecUser(username: 'user2', password: 'abc123', fullName: 'User 2')
+        initSpringSecDBService.saveAsUser(user2)
     }
 
 

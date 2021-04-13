@@ -52,9 +52,10 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
 
         ClassLoader cl = this.getClass().getClassLoader();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
-        Resource[] foundResources = resolver.getResources("classpath*:**/*Autoconfig.groovy")
+        Resource[] foundResources = resolver.getResources("classpath*:*Autoconfig.groovy")
+                                            .sort { Resource a, Resource b -> a.getFilename() < b.getFilename() ? -1 : 1  }
 
-        log.debug "AutoconfigRunListener - Searching autoconfigFiles like {classpath*:**/*Autoconfig.groovy} ..."
+        log.debug "AutoconfigRunListener - Searching autoconfigFiles like {classpath*:*Autoconfig.groovy} ..."
 
         foundResources = foundResources.sort {
             it.getFilename()
@@ -63,7 +64,6 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
         for (Resource res: foundResources){
 
             log.debug(">>> Found autoconfig file: [${res.getFilename()}, ${res.getURL()}]");
-            //Resource resource = defaultResourceLoader.getResource("classpath:/auto/config/CustomSecurityConfig.groovy")
             propertySource = loadGroovyConfig(res, encoding, currentProperties)
 
             if (propertySource?.getSource() && !propertySource.getSource().isEmpty()) {

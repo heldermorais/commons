@@ -1,5 +1,11 @@
 package commons.springsec
 
+import commons.security.SecGroup
+import commons.security.SecGroupSecRole
+import commons.security.SecRequestmap
+import commons.security.SecRole
+import commons.security.SecUser
+import commons.security.SecUserSecGroup
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.SpringSecurityService
 import groovy.util.logging.Slf4j
@@ -21,15 +27,29 @@ class InitSpringSecDBService {
         SecRole roleUser = new SecRole(authority: "ROLE_USER")
         roleUser.save(flush: true, failOnError: true)
 
+
+
+        SecGroup admins = new SecGroup( name: 'GROUP_ADMIN' )
+        admins.save(flush: true, failOnError: true)
+
+        SecGroup users = new SecGroup( name: 'GROUP_USERS' )
+        users.save(flush: true, failOnError: true)
+
+        SecGroupSecRole.create(admins,roleAdmin,true)
+        SecGroupSecRole.create(admins,roleUser ,true)
+
+        SecGroupSecRole.create(users,roleUser,true)
+
+
         SecUser admin = new SecUser( username: 'admin', password: 'abc123')
         admin.save(flush: true, failOnError: true)
 
-        SecUserSecRole.create(admin,roleAdmin,true)
+        SecUserSecGroup.create(admin,admins,true)
 
         SecUser user = new SecUser( username: 'user', password: 'abc123')
         user.save(flush: true, failOnError: true)
+        SecUserSecGroup.create(user,users,true)
 
-        SecUserSecRole.create(user,roleUser,true)
 
         for (String url in [
                 '/', '/error', '/index', '/index.gsp', '/**/favicon.ico', '/shutdown',
@@ -47,4 +67,21 @@ class InitSpringSecDBService {
         log.debug "DB de Segurança OK."
 
     }
+
+    void saveAsUser( user ){
+        user.save(flush: true, failOnError: true)
+        SecGroup grp = SecGroup.findByName("GROUP_USERS")
+        if (grp){
+            SecUserSecGroup.create(user,grp,true)
+        }
+    }
+
+    void saveAsAdmin( user ){
+        user.save(flush: true, failOnError: true)
+        SecGroup grp = SecGroup.findByName("GROUP_ADMIN")
+        if (grp){
+            SecUserSecGroup.create(user,grp,true)
+        }
+    }
+
 }

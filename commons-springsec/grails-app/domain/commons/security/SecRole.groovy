@@ -1,13 +1,13 @@
-package app.only.springsec
+package commons.security
 
+import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
-import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
 @EqualsAndHashCode(includes='authority')
 @ToString(includes='authority', includeNames=true, includePackage=false)
-class SecPerfil implements Serializable {
+class SecRole implements Serializable {
 
 	private static final long serialVersionUID = 1
 

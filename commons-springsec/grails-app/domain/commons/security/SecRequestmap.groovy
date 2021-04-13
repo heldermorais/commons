@@ -1,10 +1,9 @@
-package commons.springsec
+package commons.security
 
-import org.springframework.http.HttpMethod
-
+import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
-import grails.compiler.GrailsCompileStatic
+import org.springframework.http.HttpMethod
 
 @GrailsCompileStatic
 @EqualsAndHashCode(includes=['configAttribute', 'httpMethod', 'url'])

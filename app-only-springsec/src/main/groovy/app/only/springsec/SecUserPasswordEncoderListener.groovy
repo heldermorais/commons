@@ -1,18 +1,15 @@
-package commons.springsec
+package app.only.springsec
 
-import grails.events.annotation.gorm.Listener
 import grails.plugin.springsecurity.SpringSecurityService
-import groovy.transform.CompileStatic
-import groovy.util.logging.Slf4j
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent
 import org.grails.datastore.mapping.engine.event.PreInsertEvent
 import org.grails.datastore.mapping.engine.event.PreUpdateEvent
 import org.springframework.beans.factory.annotation.Autowired
+import grails.events.annotation.gorm.Listener
+import groovy.transform.CompileStatic
 
 @CompileStatic
-@Slf4j
 class SecUserPasswordEncoderListener {
-
 
     @Autowired
     SpringSecurityService springSecurityService
@@ -37,9 +34,6 @@ class SecUserPasswordEncoderListener {
     }
 
     private String encodePassword(String password) {
-        String ePassword = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
-        return ePassword
+        springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
     }
-
-
 }

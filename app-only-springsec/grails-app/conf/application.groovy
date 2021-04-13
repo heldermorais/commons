@@ -1,13 +1,13 @@
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'app.only.springsec.SecUsuario'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'app.only.springsec.SecUsuarioSecPerfil'
-grails.plugin.springsecurity.authority.className = 'app.only.springsec.SecPerfil'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'app.only.springsec.SecUser'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'app.only.springsec.SecUserSecRole'
+grails.plugin.springsecurity.authority.className = 'app.only.springsec.SecRole'
+grails.plugin.springsecurity.authority.groupAuthorityNameField = 'authorities'
+grails.plugin.springsecurity.useRoleGroups = true
 grails.plugin.springsecurity.requestMap.className = 'app.only.springsec.SecRequestmap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
-//grails.plugin.springsecurity.password.algorithm = 'MD5'
-
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -18,8 +18,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/js/**',       access: ['permitAll']],
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
-	[pattern: '/**/favicon.ico', access: ['permitAll']],
-	[pattern: '/h2-console/**' , access: ['permitAll']],
+	[pattern: '/**/favicon.ico', access: ['permitAll']]
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
@@ -28,7 +27,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: 'none'],
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
-	[pattern: '/h2-console/**' , filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 

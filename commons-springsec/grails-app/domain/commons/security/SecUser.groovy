@@ -1,13 +1,16 @@
-package app.only.springsec
+package commons.security
 
+
+import grails.compiler.GrailsCompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
-import grails.compiler.GrailsCompileStatic
+
+import javax.persistence.Table
 
 @GrailsCompileStatic
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
-class SecUsuario implements Serializable {
+class SecUser implements Serializable {
 
     private static final long serialVersionUID = 1
 
@@ -18,8 +21,8 @@ class SecUsuario implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
-    Set<SecPerfil> getAuthorities() {
-        (SecUsuarioSecPerfil.findAllBySecUsuario(this) as List<SecUsuarioSecPerfil>)*.secPerfil as Set<SecPerfil>
+    Set<SecGroup> getAuthorities() {
+        (SecUserSecGroup.findAllBySecUser(this) as List<SecUserSecGroup>)*.secGroup as Set<SecGroup>
     }
 
     static constraints = {
@@ -28,6 +31,7 @@ class SecUsuario implements Serializable {
     }
 
     static mapping = {
+        tablePerHierarchy false
 	    password column: '`password`'
     }
 }

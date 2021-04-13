@@ -1,4 +1,4 @@
-package commons.springsec
+package app.only.springsec
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

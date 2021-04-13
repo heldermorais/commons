@@ -1,5 +1,9 @@
 ---
 grails:
+    plugin:
+        springsecurity:
+            userLookup:
+                userDomainClassName: app.commons.AppSecUser
     profile: web
     codegen:
         defaultPackage: app.commons

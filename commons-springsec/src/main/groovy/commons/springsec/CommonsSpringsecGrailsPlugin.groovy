@@ -1,5 +1,6 @@
 package commons.springsec
 
+import commons.security.SecUserPasswordEncoderListener
 import grails.plugins.*
 import groovy.util.logging.Slf4j
 
@@ -53,6 +54,9 @@ Brief summary/description of the plugin.
         //passwordEncoder(DefaultPasswordEncoder)
 
         secUserPasswordEncoderListener(SecUserPasswordEncoderListener)
+
+        userDetailsService(CommonUserDetailsService)
+
     }
     }
 
