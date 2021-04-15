@@ -27,4 +27,5 @@ class HelloController {
         render resultado
 
     }
+
 }

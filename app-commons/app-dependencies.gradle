@@ -2,6 +2,8 @@ grails{
     plugins{
         compile project(':commons-autoconfig')
         compile project(':commons-springsec')
+
+        compile project(':commons-gui-vuetify')
         compile project(':module-sidecar')
     }
 }

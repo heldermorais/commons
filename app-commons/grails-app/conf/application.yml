@@ -139,3 +139,12 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+---
+environments:
+    development:
+        server:
+            servlet:
+               port: 8080
+               context-path: '/app-commons'
+---

@@ -56,7 +56,7 @@ class InitSpringSecDBService {
                 '/**/js/**', '/**/css/**', '/**/images/**',
                 '/login', '/login.*', '/login/*',
                 '/logout', '/logout.*', '/logout/*',
-                '/h2-console/**']) {
+                '/h2-console/**','/vue/**']) {
             new SecRequestmap(url: url, configAttribute: 'permitAll').save()
         }
 

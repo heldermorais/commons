@@ -9,3 +9,6 @@
 //= require bootstrap
 //= require popper.min
 //= require_self
+
+
+console.info("main:application.js is On.")

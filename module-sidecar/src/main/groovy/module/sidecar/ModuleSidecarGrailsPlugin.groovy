@@ -26,7 +26,7 @@ Brief summary/description of the plugin.
     def documentation = "http://grails.org/plugin/module-sidecar"
 
     // Extra (optional) plugin metadata
-    List loadAfter = ['commonsAutoconfig', 'commonsSpringsec']
+    List loadAfter = ['commonsAutoconfig', 'commonsSpringsec', 'commonsGuiVuetify']
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"

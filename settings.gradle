@@ -3,5 +3,6 @@ include 'app-commons', 'module-sidecar'
 include 'commons-autoconfig'
 include 'commons-springsec'
 
+include 'commons-gui', 'commons-gui-vuetify'
 
 include 'app-only-springsec'
