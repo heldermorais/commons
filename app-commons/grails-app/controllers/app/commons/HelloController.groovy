@@ -1,14 +1,14 @@
 package app.commons
 
-import grails.plugin.springsecurity.SpringSecurityService
+//import grails.plugin.springsecurity.SpringSecurityService
 
 class HelloController {
 
-    SpringSecurityService springSecurityService
+    //SpringSecurityService springSecurityService
 
-    HelloController( SpringSecurityService springSecurityService ){
-        this.springSecurityService = springSecurityService
-    }
+//    HelloController( SpringSecurityService springSecurityService ){
+//        //this.springSecurityService = springSecurityService
+//    }
 
     def index() {
 

@@ -1,5 +1,8 @@
+//import Vue from 'vue';
+
 const EventBus = {
     install: function (Vue, options) {
+        console.log("EventBus.install - BEGIN");
         // 1. add global method or property
         // Vue.myGlobalMethod = function () {
         //     // some logic ...
@@ -24,5 +27,10 @@ const EventBus = {
         // 4. add an instance method
         var _eventBus = new Vue();
         Vue.prototype.$eventBus = _eventBus;
+        console.log("EventBus.install - END");
     }
 }
+
+Vue.use(EventBus);
+
+//export default EventBus;

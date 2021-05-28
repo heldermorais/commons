@@ -1,5 +1,6 @@
-<template>
-  <v-app-bar app clipped-left clipped-right >
+Vue.component('gvue-toolbar', {
+    template: `
+    <v-app-bar app clipped-left clipped-right >
 
     <v-app-bar-nav-icon>
       <a @click.prevent="toggleSidebar">
@@ -37,30 +38,23 @@
     </v-toolbar-items>
 
   </v-app-bar>
-</template>
+  `,
+    data() {
+        return {
 
-<script>
-export default {
-  name: "gvue-toolbar",
-  data() {
-    return {
-
+        }
+    },
+    created: function(){
+        console.debug('main-toolbar.created()');
+    },
+    mounted: function(){
+        console.debug('main-toolbar.mounted()');
+    },
+    methods: {
+        toggleSidebar: function(){
+            console.log ("ShowSidebar !!!!")
+            //this.$store.showSidebar = !this.$store.showSidebar;
+            this.$state_mutation('sidebar:toggle')
+        }
     }
-  },
-  created: function(){
-    console.debug('main-toolbar.created()');
-  },
-  mounted: function(){
-    console.debug('main-toolbar.mounted()');
-  },
-  methods: {
-    toggleSidebar: function(){
-      this.$store.showSidebar = !this.$store.showSidebar;
-    }
-  }
-}
-</script>
-
-<style scoped>
-
-</style>
+});

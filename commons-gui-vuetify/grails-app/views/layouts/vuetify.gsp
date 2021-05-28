@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <asset:javascript src="vue/vue-bootstrap2.js" ></asset:javascript>
+    <asset:javascript src="vue/vue-bootstrap.js" ></asset:javascript>
 
     <asset:javascript src="vue/application.js" asset-defer="true"></asset:javascript>
 
@@ -67,8 +67,6 @@
 </div>
 
 
-
-
 <asset:deferredScripts />
 
 
@@ -78,16 +76,28 @@
     Vue.prototype.$currentAppBase = __currentAppBase;
 
 
+    axios.defaults.baseURL = __currentAppBase;
+
+    console.log("VueSimpleStore - BEGIN")
+    Vue.use( window.VueSimpleStore, {
+        debug: true,
+        stores: vue_state_stores
+    });
+    console.log("VueSimpleStore - END")
+
     var main_vue_app = new Vue({
         el: '#app',
         vuetify: new Vuetify(),
         router,
         created: function(){
             console.debug("Application Created !")
-            this.$axios.defaults.baseURL = __currentAppBase;
+            console.debug(this.$currentAppBase)
         },
         mounted: function(){
             console.debug("Application Mounted !")
+            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+            this.$state_mutation('sidebar:toggle');
+            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
         }
     });
 

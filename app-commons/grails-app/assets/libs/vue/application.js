@@ -8,9 +8,8 @@
 // require jquery-3.3.1.min
 // require bootstrap
 // require popper.min
-//= require vue/components/common-gui-hwhome.min.js
+
 //= require_self
 
-Vue.component('vommon-sample', CommonGuiHwhome.CommonGuiHwhomeSample);
 
 console.info("vuetify:vue/application.js is On...");
