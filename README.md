@@ -36,7 +36,7 @@
   [![Project Logo][project-logo]](https://example.com)
   
   
-  <h3 align="center">Commons Libraries for Grails4   (_v4.0.9_)</h3>
+  <h3 align="center">Commons Libraries for Grails4   (_v4.0.10_)</h3>
 
   <p align="center">
     Coleção de plugins Grails que implementam funcionalidades comuns para seus projetos!

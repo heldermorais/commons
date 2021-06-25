@@ -27,6 +27,7 @@ var _sidebarState = {
 
 }
 
+
 vue_state_stores.push(_sidebarState);
 
 

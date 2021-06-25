@@ -5,6 +5,7 @@
 //= require vue/vendor/vuetify.js
 
 //= require vue/vendor/vue-simple-store.js
+//= require vue/vendor/nprogress.min.js
 
 //= require vue/vendor/portal-vue.min.js
 console.debug("On vue-bootstrap1.js")

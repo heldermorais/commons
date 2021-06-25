@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+%{--    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">--}%
+%{--    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">--}%
+%{--    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">--}%
+
+    <asset:stylesheet src="vue/vendor/roboto-fonts.css"/>
+    <asset:stylesheet src="vue/vendor/material-icons/css/materialdesignicons.min.css"/>
+    <asset:stylesheet src="vue/vendor/vuetify.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
     <asset:javascript src="vue/vue-bootstrap.js" ></asset:javascript>
@@ -62,7 +66,30 @@
                 <g:layoutBody/>
 
             </v-container>
+
+
+            <v-bottom-sheet
+                    v-model="sheet"
+                    inset
+            >
+                    <v-alert
+                            v-model="sheet"
+                            dismissible
+                            color="cyan"
+                            border="left"
+                            elevation="2"
+                            colored-border
+                            icon="mdi-twitter"
+                    >
+                        You've got <strong>5</strong> new updates on your timeline!.
+                    </v-alert>
+
+            </v-bottom-sheet>
+
         </v-main>
+
+
+
     </v-app>
 </div>
 
@@ -71,6 +98,33 @@
 
 
 <script>
+
+    axios.interceptors.request.use(
+        function(config) {
+            // Do something before request is sent
+            NProgress.start();
+            return config;
+        },
+        function(error) {
+            // Do something with request error
+            console.error(error);
+            return Promise.reject(error);
+        }
+    );
+
+    // Add a response interceptor
+    axios.interceptors.response.use(
+        function(response) {
+            NProgress.done();
+            return response;
+        },
+        function(error) {
+            // Do something with response error
+            console.error(error);
+            return Promise.reject(error);
+        }
+    );
+
 
     var __currentAppBase = "${createLink(uri: '/')}";
     Vue.prototype.$currentAppBase = __currentAppBase;
@@ -89,6 +143,11 @@
         el: '#app',
         vuetify: new Vuetify(),
         router,
+        data: function (){
+               return {
+                   sheet: true
+               }
+        },
         created: function(){
             console.debug("Application Created !")
             console.debug(this.$currentAppBase)

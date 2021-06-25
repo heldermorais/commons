@@ -65,6 +65,9 @@
                 // this.localApi1.apiHello({nome: 'Helder from Vue'})
                 //     .then(this.onApiHelloResponse);
 
+                axios.get("/vue/apiHello?nome=you")
+                     .then(this.onApiHelloResponse)
+
                 this.$state.sidebar.sidebarItems =
                     [
                     { icon: 'mdi-contacts'     , text: 'Contacts' },
@@ -108,7 +111,7 @@
 
                 onApiHelloResponse: function (response) {
                     console.debug(response);
-                    // this.helloMessage = response.data.message
+                    this.helloMessage = response.data.message
                 },
 
                 menuItemClicked: function (item) {
