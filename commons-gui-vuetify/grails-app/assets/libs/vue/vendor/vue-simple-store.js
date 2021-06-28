@@ -17,7 +17,7 @@ var VueSimpleStore = {
       console.info('[Vue Simple Store]: In Debug Mode');
 
       var theStores = {}
-      var theState = {}
+      var theState  = {}
 
       for (var i = 0; i < opt.stores.length; i++) {
 
@@ -42,9 +42,9 @@ var VueSimpleStore = {
         //Vue.util.defineReactive(this,'$action', function(eventName,val){
         Vue.prototype.$state_mutation = function(eventName,val){
 
-          var theColon = eventName.search(':');
+          var theColon  = eventName.search(':');
           var storeName = eventName.substr(0,theColon);
-          var theEvent = eventName.substr(theColon+1,eventName.length)
+          var theEvent  = eventName.substr(theColon+1,eventName.length)
 
           if(theStores[storeName] === undefined) return console.warn("[Vue Simple Store]: the "+storeName+" store doesn't exist");
 

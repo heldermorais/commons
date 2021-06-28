@@ -30,6 +30,10 @@
                                     this application, click on each to execute its default action:
                                 </p>
 
+<h4 @click="tryNotification('success')">try Success</h4>
+<h3 @click="tryNotification('info')">try Info</h3>
+<h3 @click="tryNotification('warning')">try Warn</h3>
+<h3 @click="tryNotification('error')">try Error</h3>
 
                                 <div id="controllers" role="navigation">
                                    <slot name="controllers"></slot>
@@ -112,16 +116,33 @@
                 onApiHelloResponse: function (response) {
                     console.debug(response);
                     this.helloMessage = response.data.message
-                },
-
-                menuItemClicked: function (item) {
-                    console.debug("item: " + item.text)
+                    this.$notification.info("response.data.message: "+response.data.message,"Hello", 6000);
                 },
 
                 toggleSidebar: function(){
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
                     this.$state_mutation('sidebar:toggle');
                     // this.state.sidebar.isSidebarShowing = !this.state.sidebar.isSidebarShowing;
+                },
+
+                tryNotification: function (type){
+
+                    if(type =='success'){
+                        this.$notification.success("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='info'){
+                        this.$notification.info("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='warning'){
+                        this.$notification.warn("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='error'){
+                        this.$notification.error("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
                 },
             }
 

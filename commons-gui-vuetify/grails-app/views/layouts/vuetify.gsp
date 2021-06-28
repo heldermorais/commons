@@ -68,23 +68,7 @@
             </v-container>
 
 
-            <v-bottom-sheet
-                    v-model="sheet"
-                    inset
-            >
-                    <v-alert
-                            v-model="sheet"
-                            dismissible
-                            color="cyan"
-                            border="left"
-                            elevation="2"
-                            colored-border
-                            icon="mdi-twitter"
-                    >
-                        You've got <strong>5</strong> new updates on your timeline!.
-                    </v-alert>
-
-            </v-bottom-sheet>
+            <gvue-notification-panel></gvue-notification-panel>
 
         </v-main>
 
@@ -132,12 +116,16 @@
 
     axios.defaults.baseURL = __currentAppBase;
 
+
+
     console.log("VueSimpleStore - BEGIN")
     Vue.use( window.VueSimpleStore, {
         debug: true,
         stores: vue_state_stores
     });
     console.log("VueSimpleStore - END")
+
+
 
     var main_vue_app = new Vue({
         el: '#app',
@@ -157,6 +145,13 @@
             console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
             this.$state_mutation('sidebar:toggle');
             console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+
+            //this.$eventBus.$on('notification',this.onNotification)
+        },
+        methods:{
+            // onNotification: function (notification){
+            //     console.warn("Received a notification: ", notification);
+            // }
         }
     });
 

@@ -25,7 +25,21 @@ const EventBus = {
         // })
 
         // 4. add an instance method
-        var _eventBus = new Vue();
+        var _eventBus = new Vue({
+            data : function(){
+              return {
+
+              }
+            },
+            methods:{
+                publishEvent: function (eventName, payload){
+
+                },
+                addListener : function (eventName, callback){
+
+                }
+            }
+        });
         Vue.prototype.$eventBus = _eventBus;
         console.log("EventBus.install - END");
     }
