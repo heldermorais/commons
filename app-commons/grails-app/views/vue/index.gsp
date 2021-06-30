@@ -11,13 +11,18 @@
         Vue.component('vue-home-page', {
             template: `
                         <div id="content" role="main">
+
                             <portal to="sidebar-avatar-image">
                                 <v-img max-height="64"
                                        max-width="64" :src="avatarImage"></v-img>
                             </portal>
+
                             <portal to="sidebar-avatar-title">
                                 Helder Morais
                             </portal>
+
+
+
 
                             <section>
                                 <h1>Welcome to Grails ( vue-home-page )</h1>
@@ -30,15 +35,16 @@
                                     this application, click on each to execute its default action:
                                 </p>
 
-<h4 @click="tryNotification('success')">try Success</h4>
-<h3 @click="tryNotification('info')">try Info</h3>
-<h3 @click="tryNotification('warning')">try Warn</h3>
-<h3 @click="tryNotification('error')">try Error</h3>
+                                <h4 @click="tryNotification('success')">try Success</h4>
+                                <h3 @click="tryNotification('info')">try Info</h3>
+                                <h3 @click="tryNotification('warning')">try Warn</h3>
+                                <h3 @click="tryNotification('error')">try Error</h3>
 
                                 <div id="controllers" role="navigation">
                                    <slot name="controllers"></slot>
                                 </div>
                             </section>
+
                         </div>
                       `,
 
@@ -53,14 +59,10 @@
             },
 
             created: function () {
-                console.debug('vue-home-page.created()');
 
+                console.debug('vue-home-page.created()');
                 this.avatarImage = "${assetPath(src: '363640-200.png')}"
 
-
-                // this.localApi1 = this.$axiosServices.createNew(this.$axios, {
-                //     apiHello: 'POST /vue/apiHello.json'
-                // })
             },
 
             mounted: function () {
@@ -74,37 +76,37 @@
 
                 this.$state.sidebar.sidebarItems =
                     [
-                    { icon: 'mdi-contacts'     , text: 'Contacts' },
-                    { icon: 'mdi-history'      , text: 'Frequently contacted' },
-                    { icon: 'mdi-content-copy' , text: 'Duplicates' },
-                    {
-                        icon: 'mdi-chevron-up',
-                        'icon-alt': 'mdi-chevron-down',
-                        text: 'Labels',
-                        model: true,
-                        children: [
-                            { icon: 'mdi-add', text: 'Create label' }
-                        ]
-                    },
-                    {
-                        icon: 'mdi-chevron-up',
-                        'icon-alt': 'mdi-chevron-down',
-                        text: 'More',
-                        model: false,
-                        children: [
-                            { text: 'Import' },
-                            { text: 'Export' },
-                            { text: 'Print' },
-                            { text: 'Undo changes' },
-                            { text: 'Other contacts' }
-                        ]
-                    },
-                    { icon: 'mdi-settings'               , text: 'Settings' },
-                    { icon: 'mdi-message-outline'        , text: 'Send feedback' },
-                    { icon: 'mdi-help'                   , text: 'Help' },
-                    { icon: 'mdi-cloud-download-outline' , text: 'App downloads' },
-                    { icon: 'mdi-keyboard'               , text: 'Go to the old version' }
-                ];
+                        { icon: 'mdi-contacts'     , text: 'Contacts' },
+                        { icon: 'mdi-history'      , text: 'Frequently contacted' },
+                        { icon: 'mdi-content-copy' , text: 'Duplicates' },
+                        {
+                            icon: 'mdi-chevron-up',
+                            'icon-alt': 'mdi-chevron-down',
+                            text: 'Labels',
+                            model: true,
+                            children: [
+                                { icon: 'mdi-add', text: 'Create label' }
+                            ]
+                        },
+                        {
+                            icon: 'mdi-chevron-up',
+                            'icon-alt': 'mdi-chevron-down',
+                            text: 'More',
+                            model: false,
+                            children: [
+                                { text: 'Import' },
+                                { text: 'Export' },
+                                { text: 'Print' },
+                                { text: 'Undo changes' },
+                                { text: 'Other contacts' }
+                            ]
+                        },
+                        { icon: 'mdi-settings'               , text: 'Settings' },
+                        { icon: 'mdi-message-outline'        , text: 'Send feedback' },
+                        { icon: 'mdi-help'                   , text: 'Help' },
+                        { icon: 'mdi-cloud-download-outline' , text: 'App downloads' },
+                        { icon: 'mdi-keyboard'               , text: 'Go to the old version' }
+                    ];
 
             },
 
@@ -121,8 +123,20 @@
 
                 toggleSidebar: function(){
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+
                     this.$state_mutation('sidebar:toggle');
-                    // this.state.sidebar.isSidebarShowing = !this.state.sidebar.isSidebarShowing;
+
+                    const isMatch = wcmatch('src/?ar')
+
+                    var resultado = isMatch('src/bar') //=> true
+                    console.log("wcmatch('src/?ar')('src/bar') : ", resultado);
+
+                    resultado = isMatch('src/car') //=> true
+                    console.log("wcmatch('src/?ar')('src/car') : ", resultado);
+
+                    resultado = isMatch('src/cvar') //=> false
+                    console.log("wcmatch('src/?ar')('src/cvar') : ", resultado);
+
                 },
 
                 tryNotification: function (type){

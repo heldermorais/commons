@@ -8,6 +8,7 @@
 //= require vue/vendor/nprogress.min.js
 
 //= require vue/vendor/portal-vue.min.js
+//= require vue/vendor/wildcard-match.js
 console.debug("On vue-bootstrap1.js")
 
 

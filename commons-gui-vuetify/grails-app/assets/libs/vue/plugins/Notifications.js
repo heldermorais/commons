@@ -42,7 +42,7 @@ const Notifications = {
         });
 
         var instance = new ComponentClass() // cria Instância da classe que será publicada
-        instance.$mount();
+        //instance.$mount();
 
         Vue.prototype.$notification = instance;
         console.log("Notifications.install - END");
