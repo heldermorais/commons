@@ -1,32 +1,68 @@
 
 
+// var _sidebarState = {
+//
+//     // You must define the name of the individual store
+//     name: "sidebar",
+//
+//     // The state of the cart
+//     state: {
+//         isSidebarShowing: false,
+//         sidebarItems: [],
+//     },
+//
+//
+//     /**
+//      All actions to mutate the cart state
+//      */
+//     show(){ // Add an item to the cart
+//         this.state.isSidebarShowing = true
+//     },
+//     hide(){ // Add an item to the cart
+//         this.state.isSidebarShowing = false
+//     },
+//     toggle(){ // Add an item to the cart
+//         this.state.isSidebarShowing = !this.state.isSidebarShowing
+//     }
+//
+// }
+//
+//
+// vue_state_stores.push(_sidebarState);
+
+
+
 var _sidebarState = {
 
     // You must define the name of the individual store
     name: "sidebar",
 
     // The state of the cart
-    state: {
-        isSidebarShowing: false,
-        sidebarItems: [],
+    data: function(){
+        return {
+                isSidebarShowing: true,
+                sidebarItems: [],
+               };
     },
 
+    methods:{
+        /**
+         All actions to mutate the cart state
+         */
+        show(){ // Add an item to the cart
+            this.isSidebarShowing = true
+        },
+        hide(){ // Add an item to the cart
+            this.isSidebarShowing = false
+        },
 
-    /**
-     All actions to mutate the cart state
-     */
-    show(){ // Add an item to the cart
-        this.state.isSidebarShowing = true
-    },
-    hide(){ // Add an item to the cart
-        this.state.isSidebarShowing = false
-    },
-    toggle(){ // Add an item to the cart
-        this.state.isSidebarShowing = !this.state.isSidebarShowing
+        toggle(){ // Add an item to the cart
+            this.isSidebarShowing = !this.isSidebarShowing
+        }
+
     }
 
 }
-
 
 vue_state_stores.push(_sidebarState);
 

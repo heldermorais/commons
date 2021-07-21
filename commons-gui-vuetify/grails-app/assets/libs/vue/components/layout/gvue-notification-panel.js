@@ -1,37 +1,5 @@
 
 
-
-// var _sidebarState = {
-//
-//     // You must define the name of the individual store
-//     name: "sidebar",
-//
-//     // The state of the cart
-//     state: {
-//         isSidebarShowing: false,
-//         sidebarItems: [],
-//     },
-//
-//
-//     /**
-//      All actions to mutate the cart state
-//      */
-//     show(){ // Add an item to the cart
-//         this.state.isSidebarShowing = true
-//     },
-//     hide(){ // Add an item to the cart
-//         this.state.isSidebarShowing = false
-//     },
-//     toggle(){ // Add an item to the cart
-//         this.state.isSidebarShowing = !this.state.isSidebarShowing
-//     }
-//
-// }
-
-
-// vue_state_stores.push(_sidebarState);
-
-
 Vue.component('gvue-notification-panel', {
     template: `
             <v-bottom-sheet

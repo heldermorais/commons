@@ -4,7 +4,6 @@
 //= require vue/vendor/vue-router.js
 //= require vue/vendor/vuetify.js
 
-//= require vue/vendor/vue-simple-store.js
 //= require vue/vendor/nprogress.min.js
 
 //= require vue/vendor/portal-vue.min.js
@@ -14,6 +13,7 @@ console.debug("On vue-bootstrap1.js")
 
 console.debug("On vue-bootstrap2.js")
 
+//= require vue/plugins/VueSimpleStore2.js
 //= require vue/plugins/EventBus.js
 //= require vue/plugins/AxiosServices.js
 

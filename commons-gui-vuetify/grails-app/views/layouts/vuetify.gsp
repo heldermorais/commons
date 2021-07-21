@@ -104,6 +104,7 @@
         },
         function(error) {
             // Do something with response error
+            NProgress.done();
             console.error(error);
             return Promise.reject(error);
         }
@@ -126,7 +127,6 @@
     console.log("VueSimpleStore - END")
 
 
-
     var main_vue_app = new Vue({
         el: '#app',
         vuetify: new Vuetify(),
@@ -143,10 +143,8 @@
         mounted: function(){
             console.debug("Application Mounted !")
             console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
-            this.$state_mutation('sidebar:toggle');
+            //this.$state.sidebar.toggle();
             console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
-
-            //this.$eventBus.$on('notification',this.onNotification)
         },
         methods:{
             // onNotification: function (notification){

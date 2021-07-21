@@ -5,6 +5,8 @@
     <meta name="layout" content="vuetify"/>
     <title>Grails & Vue - Home Page</title>
 
+    <asset:javascript src="/vue/endpoints/apiHello.js" />
+
     <script type="application/javascript">
         console.info('On index.gsp...');
 
@@ -12,10 +14,13 @@
             template: `
                         <div id="content" role="main">
 
+
+
                             <portal to="sidebar-avatar-image">
                                 <v-img max-height="64"
                                        max-width="64" :src="avatarImage"></v-img>
                             </portal>
+
 
                             <portal to="sidebar-avatar-title">
                                 Helder Morais
@@ -52,8 +57,8 @@
                 return {
 
                     helloMessage: '',
-                    localApi1: null,
-                    avatarImage: '',
+                    localApi1   : null,
+                    avatarImage : '',
 
                 }
             },
@@ -63,16 +68,20 @@
                 console.debug('vue-home-page.created()');
                 this.avatarImage = "${assetPath(src: '363640-200.png')}"
 
+                this.localApi1   = endpoint_apiHello;
+
             },
 
             mounted: function () {
 
                 console.debug('vue-home-page.mounted()');
-                // this.localApi1.apiHello({nome: 'Helder from Vue'})
-                //     .then(this.onApiHelloResponse);
 
-                axios.get("/vue/apiHello?nome=you")
-                     .then(this.onApiHelloResponse)
+
+                this.localApi1
+                    .apiHello({nome: "Helder"})
+                    .then(this.onApiHelloResponse)
+                    .catch(this.onApiHelloFailure);
+
 
                 this.$state.sidebar.sidebarItems =
                     [
@@ -121,10 +130,16 @@
                     this.$notification.info("response.data.message: "+response.data.message,"Hello", 6000);
                 },
 
+                onApiHelloFailure: function (error) {
+                    //console.debug(response);
+                    this.$notification.error("error.message: "+error.message,"Error", 6000);
+                },
+
+
                 toggleSidebar: function(){
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
 
-                    this.$state_mutation('sidebar:toggle');
+                    this.$state.sidebar.toggle();
 
                     const isMatch = wcmatch('src/?ar')
 
