@@ -72,7 +72,7 @@
 
             },
 
-            mounted: function () {
+            mounted: async function () {
 
                 console.debug('vue-home-page.mounted()');
 
@@ -80,11 +80,23 @@
                 var formData = new FormData()
                 formData.append("nome", "helder")
 
-                this.localApi1
-                    .apiHello({nome: "Helder JSON"})
-                    .then(this.onApiHelloResponse)
-                    .catch(this.onApiHelloFailure);
+                // this.localApi1
+                //     .apiHello(formData)
+                //     .then(this.onApiHelloResponse)
+                //     .catch(this.onApiHelloFailure);
 
+                try{
+                    console.debug('this.localApi1 BFORE');
+                    var resposta = await this.localApi1.apiHelloSync(formData);
+                    if(resposta){
+                        this.helloMessage = resposta.data.message;
+                        this.$notification.info("response.data.message: "+this.helloMessage,"Hello", 6000);
+                        console.debug('this.localApi1 = '+this.helloMessage);
+                        console.debug('this.localApi1 AFTER');
+                    }
+                }catch(erro){
+                    console.error(erro);
+                }
 
                 this.$state.sidebar.sidebarItems =
                     [

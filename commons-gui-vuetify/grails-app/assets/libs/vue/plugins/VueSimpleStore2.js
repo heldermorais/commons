@@ -20,8 +20,8 @@ var VueSimpleStore = {
 
             // Make a global Stores
             var _StoreComponentClass = Vue.extend(opt.stores[i]);
-
             var _store_instance = new _StoreComponentClass() // cria Instância da classe que será publicada
+
             theStores[opt.stores[i].name] = _store_instance;
 
         }

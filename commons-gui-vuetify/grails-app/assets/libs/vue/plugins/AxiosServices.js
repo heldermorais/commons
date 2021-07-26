@@ -6,8 +6,13 @@
 const AxiosServices = {
     __axxios: null,
     __vue: {},
-    createNew: function( axxios, options ){
-       return new AxiosActions.ApiGroup( axxios , options )
+    createNew: function( endpoint_prototype ){
+
+       var _endpoint_apiHello = Vue.extend(endpoint_prototype)
+       var endpoint_apiHello  = new _endpoint_apiHello();
+
+       return endpoint_apiHello
+
     },
     install: function (Vue, options) {
 
@@ -18,6 +23,7 @@ const AxiosServices = {
 
         AxiosServices.__vue = Vue;
         console.debug("AxiosServices.install - END");
+
     }
 }
 

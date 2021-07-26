@@ -105,7 +105,7 @@
         function(error) {
             // Do something with response error
             NProgress.done();
-            console.error(error);
+            //console.error(error);
             return Promise.reject(error);
         }
     );
