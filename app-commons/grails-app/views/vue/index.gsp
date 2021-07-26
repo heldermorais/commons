@@ -77,8 +77,11 @@
                 console.debug('vue-home-page.mounted()');
 
 
+                var formData = new FormData()
+                formData.append("nome", "helder")
+
                 this.localApi1
-                    .apiHello({nome: "Helder"})
+                    .apiHello({nome: "Helder JSON"})
                     .then(this.onApiHelloResponse)
                     .catch(this.onApiHelloFailure);
 
