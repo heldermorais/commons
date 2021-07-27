@@ -55,7 +55,8 @@ Vue.component('gvue-toolbar', {
             console.log ("ShowSidebar !!!!")
             //this.$store.showSidebar = !this.$store.showSidebar;
             //this.$state_mutation('sidebar:toggle')
-            this.$state.sidebar.toggle();
+            //this.$state.sidebar.toggle();
+            this.$eventBus.$emit("app:toggleSidebar")
         }
     }
 });

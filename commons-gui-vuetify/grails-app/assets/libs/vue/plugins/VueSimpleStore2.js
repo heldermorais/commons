@@ -15,7 +15,7 @@ var VueSimpleStore = {
 
         for (var i = 0; i < opt.stores.length; i++) {
 
-            console.info("  ..... config Store : ", opt.stores[i].name);
+            console.info("  ..... configuting State Stores : ", opt.stores[i].name);
             if(opt.stores[i].name === undefined) console.warn("[Vue Simple Store]: Please add a Store Name", opt.stores[i]);
 
             // Make a global Stores

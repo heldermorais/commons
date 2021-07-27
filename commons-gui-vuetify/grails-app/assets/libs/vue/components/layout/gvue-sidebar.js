@@ -158,8 +158,7 @@ Vue.component('gvue-sidebar', {
     mounted: function () {
         console.debug('main-sidebar.mounted() - BEGIN');
 
-        //this.apiSidebarMenu.getItems()
-        //    .then(this.onUpdateItems)
+        this.$eventBus.$on("app:toggleSidebar", this.toggle)
 
         console.debug('main-sidebar.mounted() - END');
     },
@@ -175,6 +174,10 @@ Vue.component('gvue-sidebar', {
 
         menuItemClicked: function (item) {
             console.debug("item: " + item.text)
+        },
+
+        toggle: function () {
+            this.$state.sidebar.toggle();
         },
     }
 

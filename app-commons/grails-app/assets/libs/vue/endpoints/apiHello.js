@@ -22,23 +22,24 @@
 
 // var endpoint_apiHello = new _endpoint_apiHello();
 
-var endpoint_apiHello = AxiosServices.createNew({
-                                                  data: function(){
-                                                      return {
-                                                          url: "/vue/apiHello.json"
-                                                      }
-                                                  },
-                                                  methods: {
-                                                      onError: function(error){
-                                                          this.$notification.error("apiHello error: "+error.message,"Error", 6000);
-                                                      },
+var endpoint_apiHello = AxiosServices.createNew(
+    {
+        data: function () {
+            return {
+                url: "/vue/apiHello.json"
+            }
+        },
+        methods: {
+            onError: function (error) {
+                this.$notification.error("apiHello error: " + error.message, "Error", 6000);
+            },
 
-                                                      async apiHelloSync(payload){
-                                                          return await axios.post(this.url,  payload).catch(this.onError)
-                                                      },
+            async apiHelloSync(payload) {
+                return await axios.post(this.url, payload).catch(this.onError)
+            },
 
-                                                      apiHello: function(payload){
-                                                          return axios.post(this.url,  payload )
-                                                      }
-                                                  }
-                                                })
+            apiHello: function (payload) {
+                return axios.post(this.url, payload)
+            }
+        },
+    })
