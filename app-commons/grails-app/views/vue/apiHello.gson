@@ -1,6 +1,0 @@
-model {
-    GString messageStr
-}
-json {
-    message messageStr
-}

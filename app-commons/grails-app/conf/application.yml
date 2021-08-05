@@ -1,9 +1,5 @@
 ---
 grails:
-    plugin:
-        springsecurity:
-            userLookup:
-                userDomainClassName: app.commons.AppSecUser
     profile: web
     codegen:
         defaultPackage: app.commons
@@ -139,12 +135,11 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-
 ---
 environments:
     development:
         server:
             servlet:
-               port: 8080
-               context-path: '/app-commons'
+                port: 18080
+                context-path: '/app-commons'
 ---

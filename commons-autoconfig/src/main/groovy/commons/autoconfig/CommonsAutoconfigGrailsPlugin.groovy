@@ -8,7 +8,7 @@ import groovy.util.logging.Slf4j
 class CommonsAutoconfigGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "4.0.9 > *"
+    def grailsVersion = "4.0.11 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -21,6 +21,7 @@ class CommonsAutoconfigGrailsPlugin extends Plugin {
     def description = '''\
 Brief summary/description of the plugin.
 '''
+    def profiles = ['web']
 
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-autoconfig"
@@ -47,6 +48,7 @@ Brief summary/description of the plugin.
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
             log.debug "doWithSpring"
+
         }
     }
 

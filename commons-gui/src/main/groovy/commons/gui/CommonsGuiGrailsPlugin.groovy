@@ -3,11 +3,12 @@ package commons.gui
 import grails.plugins.*
 import groovy.util.logging.Slf4j
 
+
 @Slf4j
 class CommonsGuiGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "4.0.9 > *"
+    def grailsVersion = "4.0.11 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -25,9 +26,11 @@ Brief summary/description of the plugin.
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-gui"
 
-    // Extra (optional) plugin metadata
 
     List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore', 'commonsAutoconfig', 'commonsSpringsec']
+
+
+    // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
@@ -46,7 +49,7 @@ Brief summary/description of the plugin.
 
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
-            log.debug "doWithSpring"
+        log.debug "doWithSpring"
         }
     }
 
@@ -64,14 +67,12 @@ Brief summary/description of the plugin.
         // TODO Implement code that is executed when any artefact that this plugin is
         // watching is modified and reloaded. The event contains: event.source,
         // event.application, event.manager, event.ctx, and event.plugin.
-
         log.debug "onChange"
     }
 
     void onConfigChange(Map<String, Object> event) {
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
-
         log.debug "onConfigChange"
     }
 

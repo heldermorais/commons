@@ -9,9 +9,7 @@ class UrlMappings {
             }
         }
 
-        //"/"(view:"/index")
-        "/"(controller: 'vue', action: 'index')
-
+        "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

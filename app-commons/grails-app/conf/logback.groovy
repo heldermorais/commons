@@ -36,6 +36,5 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 root(ERROR, ['STDOUT'])
 
-logger 'app',DEBUG, ['STDOUT'], false
-logger 'commons',DEBUG, ['STDOUT'], false
-logger 'module',DEBUG, ['STDOUT'], false
+logger 'commons',DEBUG,['STDOUT'],false
+logger 'app',DEBUG,['STDOUT'],false

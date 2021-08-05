@@ -14,10 +14,9 @@ group "commons.gui.vuetify"
 apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"org.grails.grails-plugin"
-apply plugin:"org.grails.grails-plugin-publish"
+//apply plugin:"org.grails.grails-plugin-publish"
 apply plugin:"asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
-
 
 repositories {
     maven { url "https://repo.grails.org/grails/core" }
@@ -78,22 +77,23 @@ tasks.withType(GroovyCompile) {
 }
 // enable if you wish to package this plugin as a standalone application
 bootJar.enabled = false
-grailsPublish {
-    // TODO: Provide values here
-    user = 'user'
-    key = 'key'
-    githubSlug = 'foo/bar'
-    license {
-        name = 'Apache-2.0'
-    }
-    title = "My Plugin"
-    desc = "Full plugin description"
-    developers = [johndoe:"John Doe"]
-}
+//grailsPublish {
+//    // TODO: Provide values here
+//    user = 'user'
+//    key = 'key'
+//    githubSlug = 'foo/bar'
+//    license {
+//        name = 'Apache-2.0'
+//    }
+//    title = "My Plugin"
+//    desc = "Full plugin description"
+//    developers = [johndoe:"John Doe"]
+//}
 
 
 assets {
     packagePlugin = true
 }
+
 
 apply from: 'ext-dependencies.gradle'

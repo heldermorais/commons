@@ -1,8 +1,17 @@
-include 'app-commons', 'module-sidecar'
+include 'app-commons'
 
 include 'commons-autoconfig'
+
 include 'commons-springsec'
 
 include 'commons-gui', 'commons-gui-vuetify'
 
-include 'app-only-springsec'
+
+//include 'module-sidecar'
+
+
+
+//include 'app-only-springsec'
+
+
+//include 'app-commons2'

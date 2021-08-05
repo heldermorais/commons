@@ -1,14 +1,14 @@
 package commons.springsec
 
-import commons.security.SecUserPasswordEncoderListener
 import grails.plugins.*
 import groovy.util.logging.Slf4j
+
 
 @Slf4j
 class CommonsSpringsecGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "4.0.9 > *"
+    def grailsVersion = "4.0.11 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -23,10 +23,10 @@ Brief summary/description of the plugin.
 '''
     def profiles = ['web']
 
-    List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore', 'commonsAutoconfig']
-
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-springsec"
+
+    List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore', 'commonsAutoconfig']
 
     // Extra (optional) plugin metadata
 
@@ -49,15 +49,7 @@ Brief summary/description of the plugin.
             // TODO Implement runtime spring config (optional)
             log.debug "doWithSpring"
 
-        passwordEncoderFactory (DefaultPasswordEncoderFactory)
-        passwordEncoder(passwordEncoderFactory: 'buildPasswordEncoder')
-        //passwordEncoder(DefaultPasswordEncoder)
-
-        secUserPasswordEncoderListener(SecUserPasswordEncoderListener)
-
-        userDetailsService(CommonUserDetailsService)
-
-    }
+        }
     }
 
     void doWithDynamicMethods() {
@@ -80,7 +72,6 @@ Brief summary/description of the plugin.
     void onConfigChange(Map<String, Object> event) {
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
-
         log.debug "onConfigChange"
     }
 

@@ -8,7 +8,7 @@ import groovy.util.logging.Slf4j
 class CommonsGuiVuetifyGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "4.0.9 > *"
+    def grailsVersion = "4.0.11 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -26,9 +26,9 @@ Brief summary/description of the plugin.
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/commons-gui-vuetify"
 
-    // Extra (optional) plugin metadata
+    List loadAfter = ['commonsGui']
 
-    List loadAfter = ['controllers', 'hibernate', 'hibernate4', 'hibernate5', 'services', 'springSecurityCore', 'commonsAutoconfig', 'commonsSpringsec', 'commonsGui']
+    // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
@@ -47,7 +47,7 @@ Brief summary/description of the plugin.
 
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
-            log.debug "doWithSpring"
+        log.debug "doWithSpring"
         }
     }
 

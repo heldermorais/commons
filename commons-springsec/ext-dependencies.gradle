@@ -1,9 +1,12 @@
-dependencies {
-    compile 'org.grails.plugins:spring-security-core:4.0.3'
-}
+grails{
+    plugins {
 
-//grails{
-//    plugins{
-//        implementation project(':commons-autoconfig')
-//    }
-//}
+        compile project(':commons-autoconfig')
+
+        //compile project(':commons-gui')
+        //compile project(':commons-gui-vuetify')
+
+        //compile project(':commons-springsec')
+        
+    }
+}
