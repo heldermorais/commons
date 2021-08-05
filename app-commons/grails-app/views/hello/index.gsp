@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="vuetify"/>
     <title>Hello - Index</title>
 </head>
 <body>
