@@ -14,4 +14,4 @@ include 'commons-gui', 'commons-gui-vuetify'
 //include 'app-only-springsec'
 
 
-//include 'app-commons2'
+include 'app-teste'
