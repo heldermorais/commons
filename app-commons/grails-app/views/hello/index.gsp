@@ -10,6 +10,12 @@
     <script type="application/javascript">
         console.info('On index.gsp...');
 
+        //Exemplo de Rota Dinâmica dentro do componente desta página...
+
+        const Foo = { template: '<div>foo</div>' };  // Exemplo de componente para a Rota /foo
+        const Bar = { template: '<div>bar</div>' };  // Exemplo de componente para a Rota /bar
+
+
         Vue.component('vue-home-page', {
             template: `
                         <div id="content" role="main">
@@ -33,6 +39,16 @@
                                 <h1>Welcome to Grails ( vue-home-page )</h1>
 
                                 <h3 @click="toggleSidebar">helloApi[{{$state.sidebar.isSidebarShowing}}]: {{helloMessage}}</h3>
+
+                                <p> Componentes(Rota) Dinâmicas:<br />
+                                    <router-link to="/foo">Go to Foo</router-link>
+                                    <router-link to="/bar">Go to Bar</router-link>
+                                </p>
+
+
+                                <router-view></router-view>
+
+
                                 <p>
                                     Congratulations, you have successfully started your first Grails application! At the moment
                                     this is the default page, feel free to modify it to either redirect to a controller or display
@@ -69,6 +85,10 @@
                 this.avatarImage = "${assetPath(src: '363640-200.png')}"
 
                 this.localApi1   = endpoint_apiHello;
+
+                this.$router.addRoute({ path: '/', component: Foo });
+                this.$router.addRoute({ path: '/foo', component: Foo });
+                this.$router.addRoute({ path: '/bar', component: Bar });
 
             },
 
