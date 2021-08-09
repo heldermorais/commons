@@ -1,77 +1,206 @@
 <!doctype html>
 <html>
 <head>
+
     <meta name="layout" content="vuetify"/>
-    <title>Hello - Index</title>
+    <title>Grails & Vue - Home Page</title>
+
+    <asset:javascript src="/vue/endpoints/apiHello.js" />
+
+    <script type="application/javascript">
+        console.info('On index.gsp...');
+
+        Vue.component('vue-home-page', {
+            template: `
+                        <div id="content" role="main">
+
+
+
+                            <portal to="sidebar-avatar-image">
+                                <v-img max-height="64"
+                                       max-width="64" :src="avatarImage"></v-img>
+                            </portal>
+
+
+                            <portal to="sidebar-avatar-title">
+                                Helder Morais
+                            </portal>
+
+
+
+
+                            <section>
+                                <h1>Welcome to Grails ( vue-home-page )</h1>
+
+                                <h3 @click="toggleSidebar">helloApi[{{$state.sidebar.isSidebarShowing}}]: {{helloMessage}}</h3>
+                                <p>
+                                    Congratulations, you have successfully started your first Grails application! At the moment
+                                    this is the default page, feel free to modify it to either redirect to a controller or display
+                                    whatever content you may choose. Below is a list of controllers that are currently deployed in
+                                    this application, click on each to execute its default action:
+                                </p>
+
+                                <h4 @click="tryNotification('success')">try Success</h4>
+                                <h3 @click="tryNotification('info')">try Info</h3>
+                                <h3 @click="tryNotification('warning')">try Warn</h3>
+                                <h3 @click="tryNotification('error')">try Error</h3>
+
+                                <div id="controllers" role="navigation">
+                                   <slot name="controllers"></slot>
+                                </div>
+                            </section>
+
+                        </div>
+                      `,
+
+            data() {
+                return {
+
+                    helloMessage: '',
+                    localApi1   : null,
+                    avatarImage : '',
+
+                }
+            },
+
+            created: function () {
+
+                console.debug('vue-home-page.created()');
+                this.avatarImage = "${assetPath(src: '363640-200.png')}"
+
+                this.localApi1   = endpoint_apiHello;
+
+            },
+
+            mounted: async function () {
+
+                console.debug('vue-home-page.mounted()');
+
+
+                var formData = new FormData()
+                formData.append("nome", "helder")
+
+                // this.localApi1
+                //     .apiHello(formData)
+                //     .then(this.onApiHelloResponse)
+                //     .catch(this.onApiHelloFailure);
+
+                try{
+                    console.debug('this.localApi1 BFORE');
+                    var resposta = await this.localApi1.apiHelloSync(formData);
+                    if(resposta){
+                        this.helloMessage = resposta.data.message;
+                        this.$notification.info("response.data.message: "+this.helloMessage,"Hello", 6000);
+                        console.debug('this.localApi1 = '+this.helloMessage);
+                        console.debug('this.localApi1 AFTER');
+                    }
+                }catch(erro){
+                    console.error(erro);
+                }
+
+                this.$state.sidebar.sidebarItems =
+                    [
+                        { icon: 'mdi-contacts'     , text: 'Contacts' },
+                        { icon: 'mdi-history'      , text: 'Frequently contacted' },
+                        { icon: 'mdi-content-copy' , text: 'Duplicates' },
+                        {
+                            icon: 'mdi-chevron-up',
+                            'icon-alt': 'mdi-chevron-down',
+                            text: 'Labels',
+                            model: true,
+                            children: [
+                                { icon: 'mdi-add', text: 'Create label' }
+                            ]
+                        },
+                        {
+                            icon: 'mdi-chevron-up',
+                            'icon-alt': 'mdi-chevron-down',
+                            text: 'More',
+                            model: false,
+                            children: [
+                                { text: 'Import' },
+                                { text: 'Export' },
+                                { text: 'Print' },
+                                { text: 'Undo changes' },
+                                { text: 'Other contacts' }
+                            ]
+                        },
+                        { icon: 'mdi-settings'               , text: 'Settings' },
+                        { icon: 'mdi-message-outline'        , text: 'Send feedback' },
+                        { icon: 'mdi-help'                   , text: 'Help' },
+                        { icon: 'mdi-cloud-download-outline' , text: 'App downloads' },
+                        { icon: 'mdi-keyboard'               , text: 'Go to the old version' }
+                    ];
+
+            },
+
+            methods: {
+                atualizar: function () {
+                    // this.$store.count = this.$store.count + 1;
+                },
+
+                onApiHelloResponse: function (response) {
+                    console.debug(response);
+                    this.helloMessage = response.data.message
+                    this.$notification.info("response.data.message: "+response.data.message,"Hello", 6000);
+                },
+
+                onApiHelloFailure: function (error) {
+                    //console.debug(response);
+                    this.$notification.error("error.message: "+error.message,"Error", 6000);
+                },
+
+
+                toggleSidebar: function(){
+                    console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+
+                    //this.$state.sidebar.toggle();
+                    this.$eventBus.$emit("app:toggleSidebar")
+
+                    const isMatch = wcmatch('src/?ar')
+
+                    var resultado = isMatch('src/bar') //=> true
+                    console.log("wcmatch('src/?ar')('src/bar') : ", resultado);
+
+                    resultado = isMatch('src/car') //=> true
+                    console.log("wcmatch('src/?ar')('src/car') : ", resultado);
+
+                    resultado = isMatch('src/cvar') //=> false
+                    console.log("wcmatch('src/?ar')('src/cvar') : ", resultado);
+
+                },
+
+                tryNotification: function (type){
+
+                    if(type =='success'){
+                        this.$notification.success("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='info'){
+                        this.$notification.info("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='warning'){
+                        this.$notification.warn("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                    if(type =='error'){
+                        this.$notification.error("message: "+this.helloMessage,"Hello", 2000);
+                    }
+
+                },
+            }
+
+        });
+
+    </script>
+
 </head>
+
 <body>
-<content tag="nav">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li class="dropdown-item"><a href="#">Environment: ${grails.util.Environment.current.name}</a></li>
-            <li class="dropdown-item"><a href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
-            <li class="dropdown-item"><a href="#">App version:
-                <g:meta name="info.app.version"/></a>
-            </li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li class="dropdown-item"><a href="#">Grails version:
-                <g:meta name="info.app.grailsVersion"/></a>
-            </li>
-            <li class="dropdown-item"><a href="#">Groovy version: ${GroovySystem.getVersion()}</a></li>
-            <li class="dropdown-item"><a href="#">JVM version: ${System.getProperty('java.version')}</a></li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li class="dropdown-item"><a href="#">Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artefacts <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li class="dropdown-item"><a href="#">Controllers: ${grailsApplication.controllerClasses.size()}</a></li>
-            <li class="dropdown-item"><a href="#">Domains: ${grailsApplication.domainClasses.size()}</a></li>
-            <li class="dropdown-item"><a href="#">Services: ${grailsApplication.serviceClasses.size()}</a></li>
-            <li class="dropdown-item"><a href="#">Tag Libraries: ${grailsApplication.tagLibClasses.size()}</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                <li class="dropdown-item"><a href="#">${plugin.name} - ${plugin.version}</a></li>
-            </g:each>
-        </ul>
-    </li>
-</content>
 
-<div class="svg" role="presentation">
-    <div class="grails-logo-container">
-        <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
-    </div>
-</div>
-
-<div id="content" role="main">
-    <section class="row colset-2-its">
-        <h1>Hello - Index</h1>
-
-        <p>
-            Congratulations, you have successfully started your first Grails application! At the moment
-            this is the default page, feel free to modify it to either redirect to a controller or display
-            whatever content you may choose. Below is a list of controllers that are currently deployed in
-            this application, click on each to execute its default action:
-        </p>
-
-        <div id="controllers" role="navigation">
-            <h2>Available Controllers:</h2>
-            <ul>
-                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                    <li class="controller">
-                        <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
-                    </li>
-                </g:each>
-            </ul>
-        </div>
-    </section>
-</div>
+%{--  <router-view></router-view> --}%
+<vue-home-page></vue-home-page>
 
 </body>
 </html>
