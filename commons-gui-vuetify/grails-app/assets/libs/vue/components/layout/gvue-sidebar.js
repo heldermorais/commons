@@ -137,12 +137,14 @@ Vue.component('gvue-sidebar', {
       </v-navigation-drawer>
 
   `,
+
     data() {
         return {
             apiSidebarMenu: null,
             sidebarItems: []
         }
     },
+
     created: function () {
 
         console.debug('main-sidebar.created() - BEGIN');
@@ -155,6 +157,7 @@ Vue.component('gvue-sidebar', {
 
         console.debug('main-sidebar.created() - END');
     },
+
     mounted: function () {
         console.debug('main-sidebar.mounted() - BEGIN');
 

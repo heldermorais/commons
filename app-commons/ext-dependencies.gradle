@@ -1,11 +1,11 @@
+dependencies {
+    compile "org.grails.plugins:views-json-templates:2.0.4"
+}
+
 grails{
     plugins {
 
-        //compile project(':commons-autoconfig')
-
-        //compile project(':commons-gui')
         compile project(':commons-gui-vuetify')
-
         compile project(':commons-springsec')
 
     }

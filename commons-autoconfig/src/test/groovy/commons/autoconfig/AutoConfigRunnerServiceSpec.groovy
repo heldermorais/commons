@@ -1,5 +1,6 @@
 package commons.autoconfig
 
+
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 

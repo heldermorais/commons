@@ -100,10 +100,6 @@
                 var formData = new FormData()
                 formData.append("nome", "helder")
 
-                // this.localApi1
-                //     .apiHello(formData)
-                //     .then(this.onApiHelloResponse)
-                //     .catch(this.onApiHelloFailure);
 
                 try{
                     console.debug('this.localApi1 BFORE');
@@ -169,7 +165,6 @@
                     //console.debug(response);
                     this.$notification.error("error.message: "+error.message,"Error", 6000);
                 },
-
 
                 toggleSidebar: function(){
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)

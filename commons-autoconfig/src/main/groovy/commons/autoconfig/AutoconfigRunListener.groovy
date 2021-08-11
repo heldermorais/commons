@@ -18,6 +18,12 @@ import org.springframework.core.io.ResourceLoader
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.core.io.support.ResourcePatternResolver
 
+
+/**
+ * Classe é responsável por procurar e executar arquivos '*Autoconfig.groovy', localizados no classpath da aplicação ( diretório 'config' ),
+ * de forma a permitir que plugins possam ter sua configuração inicial injetada na aplicação.
+ * Esta classe precisa estar registrada em 'META-INF/spring.factories'.
+ */
 @CompileStatic
 @Slf4j
 class AutoconfigRunListener implements SpringApplicationRunListener {
@@ -39,6 +45,11 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
         log.debug "starting ..."
     }
 
+
+    /**
+     * Método em que é implementado a busca e 'merge' de arquivos de configuração ('conf/*Autoconfig.groovy').
+     * @param environment contém as propriedades do 'ambiente de execução' da aplicação.
+     */
     @Override
     void environmentPrepared(ConfigurableEnvironment environment) {
 
@@ -102,6 +113,8 @@ class AutoconfigRunListener implements SpringApplicationRunListener {
     void failed(ConfigurableApplicationContext context, Throwable exception) {
         log.debug "failed ..."
     }
+
+
 
 
     @CompileStatic(TypeCheckingMode.SKIP)

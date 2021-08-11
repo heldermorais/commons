@@ -3,11 +3,11 @@
 /**
  * @type {import('@vue/cli-service').ProjectOptions}
  */
- module.exports = {
-    // options...
+module.exports = {
     publicPath: '',
+    //outputDir: 'dist',
     filenameHashing: false,
     css: {
-          extract: false,
-         }
-  }
+        extract: false
+    },
+}

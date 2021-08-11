@@ -2,6 +2,10 @@ package commons.autoconfig
 
 import groovy.transform.CompileStatic
 
+/**
+ * Classe de apoio a {@link AutoconfigRunListener}.
+ * @{see AutoconfigRunListener}
+ */
 @CompileStatic
 class WriteFilteringMap implements Map<String, Object> {
 

@@ -1,5 +1,6 @@
 package commons.gui.vuetify
 
+import commons.gui.vuetify.autorun.GuiVuetifyRunnerService
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 

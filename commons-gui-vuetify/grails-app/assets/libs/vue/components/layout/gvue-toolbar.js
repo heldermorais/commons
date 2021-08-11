@@ -39,17 +39,21 @@ Vue.component('gvue-toolbar', {
 
   </v-app-bar>
   `,
+
     data() {
         return {
 
         }
     },
+
     created: function(){
         console.debug('main-toolbar.created()');
     },
+
     mounted: function(){
         console.debug('main-toolbar.mounted()');
     },
+
     methods: {
         toggleSidebar: function(){
             console.log ("ShowSidebar !!!!")

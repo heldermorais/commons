@@ -57,6 +57,7 @@ Vue.component('gvue-notification-panel', {
                 
             </v-bottom-sheet>
   `,
+
     data() {
         return {
             showNotification: false,

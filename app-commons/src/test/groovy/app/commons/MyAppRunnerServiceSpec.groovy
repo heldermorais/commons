@@ -1,5 +1,6 @@
 package app.commons
 
+import app.commons.autorun.MyAppRunnerService
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
