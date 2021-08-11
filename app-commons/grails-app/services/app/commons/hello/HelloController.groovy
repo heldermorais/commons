@@ -1,18 +1,24 @@
 package app.commons.hello
 
 import commons.autorun.GuiVuetifyRunnerService
-import grails.web.Controller
 
 
 
-@Controller
 class HelloController {
 
+
+
     protected GuiVuetifyRunnerService guiVuetifyRunnerService
+
+
 
     HelloController(GuiVuetifyRunnerService guiVuetifyRunnerService) {
         this.guiVuetifyRunnerService = guiVuetifyRunnerService
     }
+
+
+
+
 
 
 

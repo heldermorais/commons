@@ -7,7 +7,7 @@ import groovy.util.logging.Slf4j
 import org.springframework.boot.ApplicationArguments
 import org.springframework.stereotype.Component
 
-@Component
+
 @Transactional
 @Slf4j
 class MyAppRunnerService extends AbstractAutorunService {

@@ -3,10 +3,5 @@ grails{
 
         compile project(':commons-autoconfig')
 
-        //compile project(':commons-gui')
-        //compile project(':commons-gui-vuetify')
-
-        //compile project(':commons-springsec')
-        
     }
 }
