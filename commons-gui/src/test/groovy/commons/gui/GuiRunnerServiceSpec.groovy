@@ -1,5 +1,6 @@
 package commons.gui
 
+import commons.gui.autorun.GuiRunnerService
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 

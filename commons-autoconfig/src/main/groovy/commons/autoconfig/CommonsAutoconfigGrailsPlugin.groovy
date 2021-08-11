@@ -2,6 +2,7 @@ package commons.autoconfig
 
 import grails.plugins.*
 import groovy.util.logging.Slf4j
+import org.springframework.stereotype.Component
 
 
 @Slf4j

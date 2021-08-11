@@ -1,10 +1,11 @@
-package app.commons
+package commons.autoconfig
 
-import app.commons.hello.HelloController
+
+import commons.autoconfig.web.AutoconfigController
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class HelloControllerSpec extends Specification implements ControllerUnitTest<HelloController> {
+class AutoconfigControllerSpec extends Specification implements ControllerUnitTest<AutoconfigController> {
 
     def setup() {
     }

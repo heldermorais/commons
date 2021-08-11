@@ -1,11 +1,11 @@
-package commons.springsec
+package commons.autorun
 
-import commons.autoconfig.AbstractAutorunService
+
 import grails.gorm.transactions.Transactional
 import groovy.util.logging.Slf4j
 import org.springframework.boot.ApplicationArguments
-import org.springframework.boot.ApplicationRunner
-import org.springframework.core.Ordered
+
+
 
 
 @Transactional

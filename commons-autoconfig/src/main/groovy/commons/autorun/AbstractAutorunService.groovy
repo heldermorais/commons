@@ -1,4 +1,4 @@
-package commons.autoconfig
+package commons.autorun
 
 import groovy.util.logging.Slf4j
 import org.springframework.boot.ApplicationRunner

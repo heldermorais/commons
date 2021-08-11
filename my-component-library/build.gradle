@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:1.3.1"
+    }
+}
+
+apply plugin: 'com.moowork.node'
+
+
+task build_vue_lib(type: YarnTask) {
+    // add the express package only
+    args = ['run', 'build-lib']
+}

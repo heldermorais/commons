@@ -1,5 +1,6 @@
 package commons.springsec
 
+import commons.springsec.autorun.SpringSecRunnerService
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
