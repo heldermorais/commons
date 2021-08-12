@@ -8,5 +8,7 @@ grails{
         compile project(':commons-gui-vuetify')
         compile project(':commons-springsec')
 
+        compile project(':app-plug01')
+
     }
 }

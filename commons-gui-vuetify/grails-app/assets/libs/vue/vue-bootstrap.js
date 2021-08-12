@@ -8,7 +8,7 @@ console.debug("On vue-bootstrap1.js")
 
 
 //= require vue/plugins/Notifications.js
-
+//= require vue/components/layout/gvue-speedDial.js
 //= require vue/components/layout/gvue-sidebar.js
 //= require vue/components/layout/gvue-toolbar.js
 

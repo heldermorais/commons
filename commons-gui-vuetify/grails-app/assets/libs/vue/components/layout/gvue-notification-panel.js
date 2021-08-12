@@ -89,6 +89,7 @@ Vue.component('gvue-notification-panel', {
     },
 
     methods: {
+
         atualizar: function () {
             //this.$store.count = this.$store.count + 1;
         },
@@ -107,6 +108,7 @@ Vue.component('gvue-notification-panel', {
             this.showNotification = true;
             //console.warn("Received a notification: ", notification);
         }
+
     }
 
 });

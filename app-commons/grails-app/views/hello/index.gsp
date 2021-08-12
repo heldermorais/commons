@@ -102,6 +102,7 @@
 
 
                 try{
+
                     console.debug('this.localApi1 BFORE');
                     var resposta = await this.localApi1.apiHelloSync(formData);
                     if(resposta){
@@ -110,6 +111,7 @@
                         console.debug('this.localApi1 = '+this.helloMessage);
                         console.debug('this.localApi1 AFTER');
                     }
+
                 }catch(erro){
                     console.error(erro);
                 }
