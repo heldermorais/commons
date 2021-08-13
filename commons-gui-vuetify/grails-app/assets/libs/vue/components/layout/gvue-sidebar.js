@@ -69,7 +69,7 @@ vue_state_stores.push(_sidebarState);
 
 Vue.component('gvue-sidebar', {
     template: `
-      <v-navigation-drawer app mobile-breakpoint="960"
+      <v-navigation-drawer :app="app" mobile-breakpoint="960"
                        clipped
                        mini-variant-width="70"
                        v-model="$state.sidebar.isSidebarShowing"
@@ -137,6 +137,15 @@ Vue.component('gvue-sidebar', {
       </v-navigation-drawer>
 
   `,
+
+    props: {
+
+        app: {
+            type: Boolean,
+            default: true
+        },
+
+    },
 
     data() {
         return {
