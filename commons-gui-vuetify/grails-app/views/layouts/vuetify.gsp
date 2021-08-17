@@ -168,7 +168,9 @@
             console.debug("Application Mounted !")
             console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
             //this.$state.sidebar.toggle();
-            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+
+
+            //console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
         },
         methods:{
             // onNotification: function (notification){

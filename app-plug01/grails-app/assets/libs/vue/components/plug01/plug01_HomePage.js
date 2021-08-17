@@ -1,7 +1,7 @@
 Vue.component('plug01-homepage', {
     template: `
     
-      <v-card
+      <v-card-text
         :loading="loading"
                 
       >
@@ -14,95 +14,58 @@ Vue.component('plug01-homepage', {
         </template>
       
         
-        <v-toolbar color="white" dense >
+        <v-card-title>
         
-            <v-menu offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <v-app-bar-nav-icon v-bind="attrs" v-on="on"></v-app-bar-nav-icon>
-              </template>
-              <v-list nav dense>
-              
-              <v-list-item-group color="primary">
-              <v-list-item
-                v-for="(item, i) in menuItems"
-                :key="i"
-                @click="onMenuItemClicked(item)"
-              >
-                <v-list-item-icon>
-                  <v-icon v-text="item.icon"></v-icon>
-                </v-list-item-icon>
-    
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.text"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-            
+            <v-row>
+                                          
+                <p>Cafe Badilico</p>     
                 
-              </v-list>
-            </v-menu>
-            
-    
-            <v-toolbar-title>Cafe Badilico</v-toolbar-title>
-     
-     
-            <v-spacer></v-spacer>
-    
-    
-            <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-          
-            
-            <gvue-speeddial :activationButton="speed01.activationButton" :items="speed01.items" :onItemClickCallback="onSpeedDialClicked"></gvue-speeddial>
-            
-            
-            <v-menu offset-y bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn          
-                  icon
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <v-icon>mdi-dots-vertical</v-icon>
+                <v-spacer></v-spacer>
+                
+                <v-btn icon>
+                    <v-icon>mdi-magnify</v-icon>
                 </v-btn>
-              </template>
-              <v-list nav dense>
-                  <v-list-item-group>
-                    <v-list-item
-                      v-for="(item, index) in toolbarMenuItems"
-                      :key="index"
+                          
+                <gvue-speeddial :activationButton="speed01.activationButton" :items="speed01.items" :onItemClickCallback="onSpeedDialClicked"></gvue-speeddial>
+                           
+                <v-menu offset-y bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn          
+                      icon
+                      v-bind="attrs"
+                      v-on="on"
                     >
-        
-                    <v-list-item-content>
-                      <v-list-item-title v-text="item.title"></v-list-item-title>
-                    </v-list-item-content>
-    <!--                  <v-list-item-title>{{ item.title }}</v-list-item-title>-->
-                    </v-list-item>
-                  </v-list-item-group>
-              </v-list>
-            </v-menu>
-        
-            
-    <!--        <v-btn icon>-->
-    <!--          <v-icon>mdi-dots-vertical</v-icon>-->
-    <!--        </v-btn>-->
-          
-          
+                      <v-icon>mdi-dots-vertical</v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list nav dense>
+                      <v-list-item-group>
+                        <v-list-item
+                          v-for="(item, index) in toolbarMenuItems"
+                          :key="index"
+                        >
                 
-        </v-toolbar>
+                        <v-list-item-content>
+                          <v-list-item-title v-text="item.title"></v-list-item-title>
+                        </v-list-item-content>
+                <!--                  <v-list-item-title>{{ item.title }}</v-list-item-title>-->
+                        </v-list-item>
+                      </v-list-item-group>
+                  </v-list>
+                </v-menu>
+                           
+            </v-row>
+                
+        </v-card-title>
             
 <!--            <v-card-title>Cafe Badilico</v-card-title>-->
-            <v-card-subtitle >
-               <p class="ma-0 pa-0">$ • Italian, Cafe
-               <br/>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
-               </p>
-            </v-card-subtitle>
-          </v-col>
-          
-
-            
-                
+        <v-card-subtitle >
+           <p>$ • Italian, Cafe
+           <br/>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
+           </p>
+        </v-card-subtitle>
+      
+                          
         <v-card-text>
               <v-chip-group
                 v-model="selection"
@@ -127,6 +90,7 @@ Vue.component('plug01-homepage', {
                 
               </v-chip-group>
         </v-card-text>  
+        
         <v-card-text>
             <plug01-datatable></plug01-datatable>
         </v-card-text>
@@ -160,7 +124,7 @@ Vue.component('plug01-homepage', {
             Reserve
           </v-btn>
         </v-card-actions>
-      </v-card>
+      </v-card-text>
 
     
   `,
@@ -259,6 +223,25 @@ Vue.component('plug01-homepage', {
         //this.apiSidebarMenu.getItems()
         //    .then(this.onUpdateItems)
         //this.$eventBus.$on('notification',this.onNotification);
+
+
+        var menu1 = {
+            title: "Menu Principal",
+            items: [
+                { id: "mnuiContacts"   , icon: 'mdi-contacts'     , text: 'Contacts', description: "Esta é a descrição do menu...",
+                    subitems:[
+                        { id: "mnuiContacts2"   , icon: 'mdi-contacts'     , text: 'Contacts 2' ,},
+                        { id: "mnuiHistory2"    , icon: 'mdi-history'      , text: 'Frequently contacted 2 ' },
+                        { id: "mnuiContentCopy2", icon: 'mdi-content-copy' , text: 'Duplicates 2' },
+                    ]
+                },
+                { id: "mnuiHistory"    , icon: 'mdi-history'      , text: 'Frequently contacted', description: "Descrição também." },
+                { id: "mnuiContentCopy", icon: 'mdi-content-copy' , text: 'Duplicates' },
+            ],
+        };
+
+        this.$eventBus.$emit("app:sidebar:addMenu", menu1);
+
 
         console.debug('plug01-homepage.mounted() - END');
     },

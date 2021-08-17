@@ -172,7 +172,7 @@
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
 
                     //this.$state.sidebar.toggle();
-                    this.$eventBus.$emit("app:toggleSidebar")
+                    this.$eventBus.$emit($constants.$events.SIDEBAR_TOGGLE)
 
                     const isMatch = wcmatch('src/?ar')
 

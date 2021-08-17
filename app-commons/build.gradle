@@ -108,6 +108,8 @@ tasks.withType(Test) {
 assets {
     minifyJs = true
     minifyCss = true
+
+    //from '/vendor/lib'
 }
 
 
