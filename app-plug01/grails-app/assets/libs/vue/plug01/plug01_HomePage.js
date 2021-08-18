@@ -1,10 +1,13 @@
+//= require vue/plug01/components/plug01_SpeedDial.js
+//= require vue/plug01/components/plug01_Datatable.js
+
 Vue.component('plug01-homepage', {
     template: `
     
-      <v-card-text
-        :loading="loading"
-                
+      <v-card
+        :loading="loading"                
       >
+      
         <template slot="progress">
           <v-progress-linear
             color="deep-purple"
@@ -16,49 +19,49 @@ Vue.component('plug01-homepage', {
         
         <v-card-title>
         
-            <v-row>
-                                          
-                <p>Cafe Badilico</p>     
-                
-                <v-spacer></v-spacer>
-                
-                <v-btn icon>
-                    <v-icon>mdi-magnify</v-icon>
-                </v-btn>
-                          
-                <gvue-speeddial :activationButton="speed01.activationButton" :items="speed01.items" :onItemClickCallback="onSpeedDialClicked"></gvue-speeddial>
-                           
-                <v-menu offset-y bottom>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn          
-                      icon
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      <v-icon>mdi-dots-vertical</v-icon>
+            <v-container>
+                <v-row>         
+                    <p>Cafe Badilico</p>     
+                    
+                    <v-spacer></v-spacer>
+                    
+                    <v-btn icon>
+                        <v-icon>mdi-magnify</v-icon>
                     </v-btn>
-                  </template>
-                  <v-list nav dense>
-                      <v-list-item-group>
-                        <v-list-item
-                          v-for="(item, index) in toolbarMenuItems"
-                          :key="index"
+                              
+                    <gvue-speeddial :activationButton="speed01.activationButton" :items="speed01.items" :onItemClickCallback="onSpeedDialClicked"></gvue-speeddial>
+                               
+                    <v-menu offset-y bottom>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn          
+                          icon
+                          v-bind="attrs"
+                          v-on="on"
                         >
+                          <v-icon>mdi-dots-vertical</v-icon>
+                        </v-btn>
+                      </template>
+                      <v-list nav dense>
+                          <v-list-item-group>
+                            <v-list-item
+                              v-for="(item, index) in toolbarMenuItems"
+                              :key="index"
+                            >
+                    
+                            <v-list-item-content>
+                              <v-list-item-title v-text="item.title"></v-list-item-title>
+                            </v-list-item-content>
                 
-                        <v-list-item-content>
-                          <v-list-item-title v-text="item.title"></v-list-item-title>
-                        </v-list-item-content>
-                <!--                  <v-list-item-title>{{ item.title }}</v-list-item-title>-->
-                        </v-list-item>
-                      </v-list-item-group>
-                  </v-list>
-                </v-menu>
-                           
-            </v-row>
+                            </v-list-item>
+                          </v-list-item-group>
+                      </v-list>
+                    </v-menu>
+                </v-row>                           
+            </v-container>
                 
         </v-card-title>
             
-<!--            <v-card-title>Cafe Badilico</v-card-title>-->
+
         <v-card-subtitle >
            <p>$ • Italian, Cafe
            <br/>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
@@ -124,7 +127,7 @@ Vue.component('plug01-homepage', {
             Reserve
           </v-btn>
         </v-card-actions>
-      </v-card-text>
+      </v-card>
 
     
   `,
@@ -214,6 +217,10 @@ Vue.component('plug01-homepage', {
         //     getItems: 'get /api-gui/sidebarMenu/index.json'
         // })
 
+
+        this.$eventBus.$on(this.$constants.events.app.STARTED, this.onAppStart);
+
+
         console.debug('plug01-homepage.created() - END');
     },
 
@@ -225,33 +232,47 @@ Vue.component('plug01-homepage', {
         //this.$eventBus.$on('notification',this.onNotification);
 
 
-        var menu1 = {
-            title: "Menu Principal",
+        var menu2 = {
+            title: "Este registro",
             items: [
-                { id: "mnuiContacts"   , icon: 'mdi-contacts'     , text: 'Contacts', description: "Esta é a descrição do menu...",
-                    subitems:[
-                        { id: "mnuiContacts2"   , icon: 'mdi-contacts'     , text: 'Contacts 2' ,},
-                        { id: "mnuiHistory2"    , icon: 'mdi-history'      , text: 'Frequently contacted 2 ' },
-                        { id: "mnuiContentCopy2", icon: 'mdi-content-copy' , text: 'Duplicates 2' },
-                    ]
-                },
-                { id: "mnuiHistory"    , icon: 'mdi-history'      , text: 'Frequently contacted', description: "Descrição também." },
-                { id: "mnuiContentCopy", icon: 'mdi-content-copy' , text: 'Duplicates' },
+                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Servidor' },
+                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Benefício' },
+                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Tempo de Contribuição' },
+                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Serviço Público' },
+                { id: "mnui_servidor"  , icon: 'mdi-currency-usd  '    , text: 'Proventos' },
+                { id: "mnui_servidor"  , icon: 'mdi-playlist-check '    , text: 'Demostrativo de Proventos' },
+                { id: "mnui_servidor"  , icon: 'mdi-paperclip  '    , text: 'Arquivos & Docs' },
             ],
         };
 
-        this.$eventBus.$emit("app:sidebar:addMenu", menu1);
+        this.$eventBus.$emit(this.$constants.events.sidebar.ADDMENU, menu2);
 
+
+        var menu1 = {
+            title: "Menu Principal",
+            items: [
+                { id: "mnui_Contacts"   , icon: 'mdi-contacts'     , text: 'Contacts', description: "Esta é a descrição do menu...",
+                    subitems:[
+                        { id: "mnui_Contacts2"   , icon: 'mdi-contacts'     , text: 'Contacts 2'             , onClick: this.onMenuItemClicked},
+                        { id: "mnui_History2"    , icon: 'mdi-history'      , text: 'Frequently contacted 2 ', onClick: this.onMenuItemClicked},
+                        { id: "mnui_ContentCopy2", icon: 'mdi-content-copy' , text: 'Duplicates 2'           , onClick: this.onMenuItemClicked},
+                    ]
+                },
+                { id: "mnui_History"    , icon: 'mdi-history'      , text: 'Frequently contacted', description: "Descrição também." },
+                { id: "mnui_ContentCopy", icon: 'mdi-content-copy' , text: 'Duplicates' , onClick: this.onMenuItemClicked},
+            ],
+        };
+
+        this.$eventBus.$emit(this.$constants.events.sidebar.ADDMENU, menu1);
 
         console.debug('plug01-homepage.mounted() - END');
     },
 
     methods: {
 
-        atualizar: function () {
-            //this.$store.count = this.$store.count + 1;
+        onAppStart: function () {
+            console.warn("App iniciada.... ja sei!")
         },
-
 
         onMenuItemClicked: function (item) {
             console.warn("MenuItem foi clicado !", item)
@@ -270,21 +291,6 @@ Vue.component('plug01-homepage', {
 
             setTimeout(() => (this.loading = false), 2000)
         },
-
-        //
-        // onNotification: function (notification){
-        //     //console.warn("Received a notification: ", notification);
-        //     this.notification = notification;
-        //
-        //     setTimeout(
-        //         function() {
-        //             //console.warn("turn notification OFF! ");
-        //             this.showNotification = false;
-        //         }.bind(this), notification.timeout);
-        //
-        //     this.showNotification = true;
-        //     //console.warn("Received a notification: ", notification);
-        // }
 
     }
 

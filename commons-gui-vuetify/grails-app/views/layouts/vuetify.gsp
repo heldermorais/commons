@@ -46,6 +46,8 @@
 
     </style>
 
+    <title><g:layoutTitle default="Grails & Vuetify"/></title>
+
 </head>
 <body>
 
@@ -53,9 +55,6 @@
 
 <div id="app" v-cloak>
     <v-app>
-%{--        <v-main>--}%
-%{--            <v-container>Hello world, From Grails & Vue/Vuetify !</v-container>--}%
-%{--        </v-main>--}%
 
         <gvue-toolbar>
             <asset:assetPathExists src="logo.svg">
@@ -94,7 +93,7 @@
     </v-app>
 </div>
 
-<asset:javascript src="vue/application.js" asset-defer="true"></asset:javascript>
+<asset:javascript src="vue/application.js"     asset-defer="true"></asset:javascript>
 <asset:javascript src="vue/vue-application.js" asset-defer="true"></asset:javascript>
 
 <asset:deferredScripts />
@@ -102,6 +101,7 @@
 <script>
 
 
+    // Add a request interceptor
     axios.interceptors.request.use(
         function(config) {
             // Do something before request is sent
@@ -162,20 +162,18 @@
         },
         created: function(){
             console.debug("Application Created !")
-            console.debug(this.$currentAppBase)
+            //console.debug(this.$currentAppBase)
         },
         mounted: function(){
             console.debug("Application Mounted !")
-            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+            //console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
             //this.$state.sidebar.toggle();
 
+            this.$eventBus.$emit(this.$constants.events.app.STARTED);
 
-            //console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
         },
         methods:{
-            // onNotification: function (notification){
-            //     console.warn("Received a notification: ", notification);
-            // }
+
         }
     });
 

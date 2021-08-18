@@ -14,9 +14,12 @@ class Plug01Controller {
     }
 
 
+    def index() {
 
+        //use renderVueComponent para renderizar um único componente na página ( sem props nem nada )
+        renderVueComponent("plug01-homepage", "vue/plug01/plug01_HomePage.js")
 
-    def index() { }
+    }
 
 
 }

@@ -94,3 +94,6 @@ bootJar.enabled = false
 assets {
     packagePlugin = true
 }
+
+
+apply from: 'ext-dependencies.gradle'

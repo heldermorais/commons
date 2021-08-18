@@ -1,7 +1,10 @@
 package app.plug01
 
 import grails.plugins.*
+import groovy.util.logging.Slf4j
 
+
+@Slf4j
 class AppPlug01GrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
@@ -42,29 +45,35 @@ Brief summary/description of the plugin.
 
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
+            log.debug("AppPlug01GrailsPlugin.doWithSpring")
         }
     }
 
     void doWithDynamicMethods() {
         // TODO Implement registering dynamic methods to classes (optional)
+        log.debug("AppPlug01GrailsPlugin.doWithDynamicMethods")
     }
 
     void doWithApplicationContext() {
         // TODO Implement post initialization spring config (optional)
+        log.debug("AppPlug01GrailsPlugin.doWithApplicationContext")
     }
 
     void onChange(Map<String, Object> event) {
         // TODO Implement code that is executed when any artefact that this plugin is
         // watching is modified and reloaded. The event contains: event.source,
         // event.application, event.manager, event.ctx, and event.plugin.
+        log.debug("AppPlug01GrailsPlugin.onChange")
     }
 
     void onConfigChange(Map<String, Object> event) {
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
+        log.debug("AppPlug01GrailsPlugin.onConfigChange")
     }
 
     void onShutdown(Map<String, Object> event) {
         // TODO Implement code that is executed when the application shuts down (optional)
+        log.debug("AppPlug01GrailsPlugin.onShutdown")
     }
 }

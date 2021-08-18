@@ -26,16 +26,32 @@ const MainConstants = {
         // })
 
         Vue.prototype.$constants = {
-            $events: {
-                SIDEBAR_ADDMENU   :"app:sidebar:addMenu"    ,
-                SIDEBAR_CLEARMENU :"app:sidebar:clearMenu" ,
 
-                SIDEBAR_SHOW      :"app:sidebar:show"           ,
-                SIDEBAR_HIDE      :"app:sidebar:hide"           ,
-                SIDEBAR_TOGGLE    :"app:sidebar:toggle"       ,
+            events: {
+                app: {
+                    MOUNTED    : "app:mounted",
+                    STARTED    : "app:mounted",
+                },
+                sidebar: {
+                    ADDMENU    : "app:sidebar:addMenu",
+                    CLEARMENU  : "app:sidebar:clearMenu",
 
-                SIDEBAR_MENUCLICKED :"app:sidebar:toggle"       ,
-            }
+                    SHOW       : "app:sidebar:show",
+                    HIDE       : "app:sidebar:hide",
+                    TOGGLE     : "app:sidebar:toggle",
+
+                    MENUCLICKED: "app:sidebar:menuclicked",
+                },
+                notification: {
+                    SHOW    : "app:notification",
+                    TRIGGER : "app:notification",
+                },
+                alert: {
+                    DONE  : "app:alert:done",
+                    CLOSE : "app:alert:done",
+                },
+            },
+
         };
 
         console.log("MainConstants.install - END");

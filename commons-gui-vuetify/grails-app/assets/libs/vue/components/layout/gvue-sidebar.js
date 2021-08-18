@@ -1,37 +1,5 @@
 
 
-// var _sidebarState = {
-//
-//     // You must define the name of the individual store
-//     name: "sidebar",
-//
-//     // The state of the cart
-//     state: {
-//         isSidebarShowing: false,
-//         sidebarItems: [],
-//     },
-//
-//
-//     /**
-//      All actions to mutate the cart state
-//      */
-//     show(){ // Add an item to the cart
-//         this.state.isSidebarShowing = true
-//     },
-//     hide(){ // Add an item to the cart
-//         this.state.isSidebarShowing = false
-//     },
-//     toggle(){ // Add an item to the cart
-//         this.state.isSidebarShowing = !this.state.isSidebarShowing
-//     }
-//
-// }
-//
-//
-// vue_state_stores.push(_sidebarState);
-
-
-
 var _sidebarState = {
 
     // You must define the name of the individual store
@@ -84,8 +52,8 @@ Vue.component('gvue-sidebar', {
                          
             
         <v-list nav dense
-                v-for="(menu, i) in $state.sidebar.menus"
-                :key="i"
+                v-for="menu in $state.sidebar.menus"
+                :key="menu.title"
         >
             <template>
             <v-subheader>
@@ -94,7 +62,7 @@ Vue.component('gvue-sidebar', {
             </template>
           
             <template
-              v-for="(item, i) in menu.items"              
+              v-for="item in menu.items"                  
             >            
                   <v-list-group
                     v-if="item.subitems"
@@ -109,8 +77,8 @@ Vue.component('gvue-sidebar', {
                     </template>
                     
                     <v-list-item
-                        v-for="(subitem, i) in item.subitems"
-                        :key="i"
+                        v-for="subitem in item.subitems"
+                        :key="subitem.id"
                         @click="menuItemClicked(subitem)"
                         link
                     >
@@ -171,34 +139,31 @@ Vue.component('gvue-sidebar', {
 
     data() {
         return {
-            // apiSidebarMenu   : null,
-            // sidebarItems     : [],
-            //
-            // menus            : [],
-            // isSidebarShowing : true,
+
         }
     },
 
     created: function () {
 
-        console.debug('main-sidebar.created() - BEGIN');
+        //console.debug('main-sidebar.created() - BEGIN');
 
-        this.$eventBus.$on(this.$constants.$events.SIDEBAR_ADDMENU  , this.onAddMenu);
-        this.$eventBus.$on(this.$constants.$events.SIDEBAR_CLEARMENU, this.onClearMenu);
-
-        this.$eventBus.$on(this.$constants.$events.SIDEBAR_SHOW     , this.$state.sidebar.show);
-        this.$eventBus.$on(this.$constants.$events.SIDEBAR_HIDE     , this.$state.sidebar.hide);
-        this.$eventBus.$on(this.$constants.$events.SIDEBAR_TOGGLE   , this.$state.sidebar.toggle);
+        this.$eventBus.$on(this.$constants.events.sidebar.ADDMENU  , this.onAddMenu);
+        this.$eventBus.$on(this.$constants.events.sidebar.CLEARMENU, this.onClearMenu);
         
-        console.debug('main-sidebar.created() - END');
+
+        this.$eventBus.$on(this.$constants.events.sidebar.SHOW     , this.$state.sidebar.show);
+        this.$eventBus.$on(this.$constants.events.sidebar.HIDE     , this.$state.sidebar.hide);
+        this.$eventBus.$on(this.$constants.events.sidebar.TOGGLE   , this.$state.sidebar.toggle);
+
+        //console.debug('main-sidebar.created() - END');
     },
 
     mounted: function () {
-        console.debug('main-sidebar.mounted() - BEGIN');
+        //console.debug('main-sidebar.mounted() - BEGIN');
 
         //this.$eventBus.$on("app:toggleSidebar", this.toggle)
 
-        console.debug('main-sidebar.mounted() - END');
+        //console.debug('main-sidebar.mounted() - END');
     },
 
     methods: {
@@ -212,29 +177,29 @@ Vue.component('gvue-sidebar', {
 
 
         onAddMenu: function (menu) {
-            console.debug("Adding menu : " , menu);
+            //console.debug("Adding menu : " , menu);
             this.$state.sidebar.menus.push(menu);
         },
 
         onClearMenu: function () {
-            console.debug("Clearing menu : " );
+            //console.debug("Clearing menu : " );
             this.$state.sidebar.menus = [];
-            this.$eventBus.$on(this.$constants.$events.SIDEBAR_ADDMENU  , this.onAddMenu);
+            this.$eventBus.$on(this.$constants.events.sidebar.ADDMENU  , this.onAddMenu);
         },
 
         menuItemClicked: function (item) {
-            console.debug("sidebar Menu item clicked: " + item.text);
-            this.$eventBus.$emit(this.$constants.$events.SIDEBAR_MENUCLICKED , item);
+            //console.debug("sidebar Menu item clicked: " + item.text);
+            if (item.onClick){
+                item.onClick(item)
+            }
+            this.$eventBus.$emit(this.$constants.events.sidebar.MENUCLICKED , item);
         },
 
         onShowMenu: function (show) {
-            console.debug("sidebar Menu show: " + show);
+            //console.debug("sidebar Menu show: " + show);
             this.$state.sidebar.isSidebarShowing = show;
         },
 
-        onToggle: function () {
-            this.$state.sidebar.isSidebarShowing = !this.$state.sidebar.isSidebarShowing;
-        },
     }
 
 });

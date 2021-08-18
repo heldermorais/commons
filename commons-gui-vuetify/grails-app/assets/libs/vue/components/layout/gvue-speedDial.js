@@ -97,15 +97,15 @@ Vue.component('gvue-speeddial', {
     },
 
     created: function () {
-        console.debug('gvue-speeddial.created() - BEGIN');
+        //console.debug('gvue-speeddial.created() - BEGIN');
 
-        console.debug('gvue-speeddial.created() - END');
+        //console.debug('gvue-speeddial.created() - END');
     },
 
     mounted: function () {
-        console.debug('gvue-speeddial.mounted() - BEGIN');
+        //console.debug('gvue-speeddial.mounted() - BEGIN');
 
-        console.debug('gvue-speeddial.mounted() - END');
+        //console.debug('gvue-speeddial.mounted() - END');
     },
 
 

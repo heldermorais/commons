@@ -1,4 +1,7 @@
-//import Vue from 'vue';
+//= require vue/components/notification/gvue-alert.js
+//= require vue/components/notification/gvue-notification-panel.js
+
+
 
 const Notifications = {
 
@@ -50,23 +53,23 @@ const Notifications = {
 
 
     successNotification: function (message, title= "", timeout = 5000){
-        this.$eventBus.$emit('notification', { type: 'success', title: title, message: message, timeout: timeout });
+        this.$eventBus.$emit(this.$constants.events.notification.TRIGGER, { type: 'success', title: title, message: message, timeout: timeout });
     },
 
     infoNotification: function (message, title= "", timeout = 5000){
-        this.$eventBus.$emit('notification', { type: 'info', title: title, message: message, timeout: timeout });
+        this.$eventBus.$emit(this.$constants.events.notification.TRIGGER, { type: 'info', title: title, message: message, timeout: timeout });
     },
 
     warnNotification: function (message, title= "", timeout = 5000){
-        this.$eventBus.$emit('notification', { type: 'warning', title: title, message: message, timeout: timeout });
+        this.$eventBus.$emit(this.$constants.events.notification.TRIGGER, { type: 'warning', title: title, message: message, timeout: timeout });
     },
 
     errorNotif: function (message, title= "", timeout = 5000){
-        this.$eventBus.$emit('notification', { type: 'error', title: title, message: message, timeout: timeout });
+        this.$eventBus.$emit(this.$constants.events.notification.TRIGGER, { type: 'error', title: title, message: message, timeout: timeout });
     },
 
 }
 
 Vue.use(Notifications);
 
-//export default EventBus;
+
