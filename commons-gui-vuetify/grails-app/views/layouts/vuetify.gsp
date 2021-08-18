@@ -3,7 +3,8 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css"  />
@@ -24,10 +25,14 @@
 
     <asset:stylesheet src="vue/application.css"/>
 
+
+
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
 
 
     <asset:javascript src="vue/vue-bootstrap.js" ></asset:javascript>
+
+
 
     <g:layoutHead/>
 
@@ -41,6 +46,8 @@
 
     </style>
 
+    <title><g:layoutTitle default="Grails & Vuetify"/></title>
+
 </head>
 <body>
 
@@ -48,9 +55,6 @@
 
 <div id="app" v-cloak>
     <v-app>
-%{--        <v-main>--}%
-%{--            <v-container>Hello world, From Grails & Vue/Vuetify !</v-container>--}%
-%{--        </v-main>--}%
 
         <gvue-toolbar>
             <asset:assetPathExists src="logo.svg">
@@ -71,7 +75,7 @@
             </template>
         </gvue-toolbar>
 
-        <gvue-sidebar></gvue-sidebar>
+        <gvue-sidebar :app="true"></gvue-sidebar>
 
         <v-main>
             <v-container>
@@ -89,7 +93,7 @@
     </v-app>
 </div>
 
-<asset:javascript src="vue/application.js" asset-defer="true"></asset:javascript>
+<asset:javascript src="vue/application.js"     asset-defer="true"></asset:javascript>
 <asset:javascript src="vue/vue-application.js" asset-defer="true"></asset:javascript>
 
 <asset:deferredScripts />
@@ -97,6 +101,7 @@
 <script>
 
 
+    // Add a request interceptor
     axios.interceptors.request.use(
         function(config) {
             // Do something before request is sent
@@ -157,18 +162,18 @@
         },
         created: function(){
             console.debug("Application Created !")
-            console.debug(this.$currentAppBase)
+            //console.debug(this.$currentAppBase)
         },
         mounted: function(){
             console.debug("Application Mounted !")
-            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+            //console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
             //this.$state.sidebar.toggle();
-            console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
+
+            this.$eventBus.$emit(this.$constants.events.app.STARTED);
+
         },
         methods:{
-            // onNotification: function (notification){
-            //     console.warn("Received a notification: ", notification);
-            // }
+
         }
     });
 

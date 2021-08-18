@@ -102,14 +102,20 @@
 
 
                 try{
+
                     console.debug('this.localApi1 BFORE');
                     var resposta = await this.localApi1.apiHelloSync(formData);
                     if(resposta){
                         this.helloMessage = resposta.data.message;
-                        this.$notification.info("response.data.message: "+this.helloMessage,"Hello", 6000);
+                        this.$notification.info   ("response.data.message: "+this.helloMessage,"Hello 1", 8000);
+                        this.$notification.warn   ("Warn: "+this.helloMessage    ,"Hello 2", 5000);
+                        this.$notification.success("Success: "+this.helloMessage ,"Hello 3", 4000);
+                        this.$notification.error  ("Error: "+this.helloMessage   ,"Hello 4", -1);
+
                         console.debug('this.localApi1 = '+this.helloMessage);
                         console.debug('this.localApi1 AFTER');
                     }
+
                 }catch(erro){
                     console.error(erro);
                 }
@@ -170,7 +176,7 @@
                     console.log("toggleSidebar : ", this.$state.sidebar.isSidebarShowing)
 
                     //this.$state.sidebar.toggle();
-                    this.$eventBus.$emit("app:toggleSidebar")
+                    this.$eventBus.$emit($constants.$events.SIDEBAR_TOGGLE)
 
                     const isMatch = wcmatch('src/?ar')
 

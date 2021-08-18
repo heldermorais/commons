@@ -47,20 +47,18 @@ Vue.component('gvue-toolbar', {
     },
 
     created: function(){
-        console.debug('main-toolbar.created()');
+        //console.debug('main-toolbar.created()');
     },
 
     mounted: function(){
-        console.debug('main-toolbar.mounted()');
+        //console.debug('main-toolbar.mounted()');
     },
 
     methods: {
         toggleSidebar: function(){
-            console.log ("ShowSidebar !!!!")
-            //this.$store.showSidebar = !this.$store.showSidebar;
-            //this.$state_mutation('sidebar:toggle')
-            //this.$state.sidebar.toggle();
-            this.$eventBus.$emit("app:toggleSidebar")
+            //console.log ("toggleSidebar !!!!")
+
+            this.$eventBus.$emit(this.$constants.events.sidebar.TOGGLE);
         }
     }
 });

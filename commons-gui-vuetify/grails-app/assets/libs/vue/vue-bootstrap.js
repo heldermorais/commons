@@ -1,21 +1,16 @@
 
 console.debug("On vue-bootstrap1.js")
 
+//= require vue/plugins/main-constants.js
 
 //= require vue/plugins/VueSimpleStore2.js
 //= require vue/plugins/EventBus.js
 //= require vue/plugins/AxiosServices.js
 
 
-//= require vue/plugins/Notifications.js
+//= require vue/components/notification/Notification.js
+//= require vue/components/layout/CustomLayout.js
 
-//= require vue/components/layout/gvue-sidebar.js
-//= require vue/components/layout/gvue-toolbar.js
-
-
-//= require vue/components/layout/gvue-notification-panel.js
-// require vue/application.js
-// require vue/vue-application.js
 
 //= require_self
 

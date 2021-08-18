@@ -1,10 +1,13 @@
-include 'app-commons'
+include 'app-commons','app-plug01'
 
 include 'commons-autoconfig'
 
 include 'commons-springsec'
 
 include 'commons-gui', 'commons-gui-vuetify'
+
+
+
 
 
 //include 'module-sidecar'
