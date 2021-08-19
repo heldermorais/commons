@@ -3,8 +3,10 @@
 
 Vue.component('plug01-homepage', {
     template: `
+    <v-container fluid>
     
       <v-card
+        class="ma-2"
         :loading="loading"                
       >
       
@@ -15,8 +17,7 @@ Vue.component('plug01-homepage', {
             indeterminate
           ></v-progress-linear>
         </template>
-      
-        
+              
         <v-card-title>
         
             <v-container>
@@ -29,7 +30,10 @@ Vue.component('plug01-homepage', {
                         <v-icon>mdi-magnify</v-icon>
                     </v-btn>
                               
-                    <gvue-speeddial :activationButton="speed01.activationButton" :items="speed01.items" :onItemClickCallback="onSpeedDialClicked"></gvue-speeddial>
+                    <gvue-speeddial :activationButton="speed01.activationButton" 
+                                    :items="speed01.items" 
+                                    :onItemClickCallback="onSpeedDialClicked">              
+                    </gvue-speeddial>
                                
                     <v-menu offset-y bottom>
                       <template v-slot:activator="{ on, attrs }">
@@ -41,6 +45,7 @@ Vue.component('plug01-homepage', {
                           <v-icon>mdi-dots-vertical</v-icon>
                         </v-btn>
                       </template>
+                      
                       <v-list nav dense>
                           <v-list-item-group>
                             <v-list-item
@@ -67,39 +72,44 @@ Vue.component('plug01-homepage', {
            <br/>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
            </p>
         </v-card-subtitle>
+      </v-card>
       
-                          
-        <v-card-text>
-              <v-chip-group
-                v-model="selection"
-                active-class="cyan accent-4 white--text"
-                column
-              >
-                <router-link to="/foo"><v-chip label color="cyan lighten-4">Servidor</v-chip></router-link>
+      <v-card class="ma-2">           
+           
+            <v-card-text>
+                  <v-chip-group
+                    v-model="selection"
+                    active-class="cyan accent-4 white--text"
+                    column
+                  >
+                    <router-link to="/foo"><v-chip label color="cyan lighten-4">Servidor</v-chip></router-link>
+            
+                    <router-link to="/Zzz"><v-chip label color="cyan lighten-4">Benefício</v-chip></router-link>
+            
+                    <router-link to="/Ccc"><v-chip label color="cyan lighten-4">Tempo de Contribuição</v-chip></router-link>
+            
+                    <router-link to="/444/2"><v-chip label color="cyan lighten-4">Serviço Público</v-chip></router-link>
+                    
+                    <v-chip label color="cyan lighten-4">Proventos</v-chip>
+                    
+                    <v-chip label color="cyan lighten-4">Demonstrativo de Proventos</v-chip>
+                    
+                    <v-chip label color="cyan lighten-4">
+                        <v-icon left>mdi-label</v-icon> Arquivos & Docs
+                    </v-chip>
+                    
+                  </v-chip-group>
+            </v-card-text>  
+            
+            <v-card-text>
+                <plug01-datatable></plug01-datatable>
+            </v-card-text>
         
-                <router-link to="/Zzz"><v-chip label color="cyan lighten-4">Benefício</v-chip></router-link>
         
-                <router-link to="/Ccc"><v-chip label color="cyan lighten-4">Tempo de Contribuição</v-chip></router-link>
+      </v-card>
         
-                <router-link to="/444/2"><v-chip label color="cyan lighten-4">Serviço Público</v-chip></router-link>
-                
-                <v-chip label color="cyan lighten-4">Proventos</v-chip>
-                
-                <v-chip label color="cyan lighten-4">Demonstrativo de Proventos</v-chip>
-                
-                <v-chip label color="cyan lighten-4">
-                    <v-icon left>mdi-label</v-icon> Arquivos & Docs
-                </v-chip>
-                
-              </v-chip-group>
-        </v-card-text>  
-        
-        <v-card-text>
-            <plug01-datatable></plug01-datatable>
-        </v-card-text>
-        
-        <v-divider class="mx-4"></v-divider>
-    
+      <v-card class="ma-2">           
+             
         <v-card-title>Tonight's availability</v-card-title>
     
         <v-card-text>
@@ -128,7 +138,8 @@ Vue.component('plug01-homepage', {
           </v-btn>
         </v-card-actions>
       </v-card>
-
+      
+    </v-container>
     
   `,
 
@@ -231,38 +242,21 @@ Vue.component('plug01-homepage', {
         //    .then(this.onUpdateItems)
         //this.$eventBus.$on('notification',this.onNotification);
 
-
-        var menu2 = {
-            title: "Este registro",
-            items: [
-                { id: "mnui_servidor"  ,  text: ' • Servidor' },
-                { id: "mnui_servidor"  ,  text: ' • Benefício' },
-                { id: "mnui_servidor"  ,  text: ' • Tempo de Contribuição' },
-                { id: "mnui_servidor"  ,  text: ' • Serviço Público' },
-                { id: "mnui_servidor"  ,  text: ' • Proventos' },
-                { id: "mnui_servidor"  ,  text: ' • Demostrativo de Proventos' },
-                { id: "mnui_servidor"  ,  text: ' • Arquivos & Docs' },
-            ],
-        };
-
-        this.$eventBus.$emit(this.$constants.events.sidebar.ADDMENU, menu2);
-
-
         var menu1 = {
             title: "Menu Principal",
             items: [
-                { id: "mnui_Contacts"   , icon: this.$materialIcons.MDI_CONTACTS     , text: 'Contacts', description: "Esta é a descrição do menu...",
+                { id: "mnui_Contacts"   , icon: this.$materialIcons.MDI_CARD_BULLETED     , text: 'Este registro', description: "Esta é a descrição do menu...",
                     subitems:[
-                        { id: "mnui_servidor1"  ,  text: ' • Servidor' },
-                        { id: "mnui_servidor2"  ,  text: ' • Benefício' },
-                        { id: "mnui_servidor3"  ,  text: ' • Tempo de Contribuição' },
-                        { id: "mnui_servidor4"  ,  text: ' • Serviço Público' },
-                        { id: "mnui_servidor5"  ,  text: ' • Proventos' },
-                        { id: "mnui_servidor6"  ,  text: ' • Demostrativo de Proventos' },
-                        { id: "mnui_servidor7"  ,  text: ' • Arquivos & Docs' },
-                        { id: "mnui_Contacts2"   ,  text: ' • Contacts 2'             , onClick: this.onMenuItemClicked},
-                        { id: "mnui_History2"    ,  text: ' • Frequently contacted 2 ', onClick: this.onMenuItemClicked},
-                        { id: "mnui_ContentCopy2",  text: ' • Duplicates 2'           , onClick: this.onMenuItemClicked},
+                        { id: "mnui_servidor1"   ,  text: 'Servidor' },
+                        { id: "mnui_servidor2"   , icon: this.$materialIcons.MDI_CONTENT_COPY, text: 'Benefício' },
+                        { id: "mnui_servidor3"   ,  text: 'Tempo de Contribuição' },
+                        { id: "mnui_servidor4"   ,  text: 'Serviço Público' },
+                        { id: "mnui_servidor5"   , icon: this.$materialIcons.MDI_CONTENT_COPY, text: 'Proventos' },
+                        { id: "mnui_servidor6"   ,  text: 'Demostrativo de Proventos' },
+                        { id: "mnui_servidor7"   ,  text: 'Arquivos & Docs' },
+                        { id: "mnui_Contacts2"   ,  text: 'Contacts 2'             , onClick: this.onMenuItemClicked},
+                        { id: "mnui_History2"    ,  text: 'Frequently contacted 2 ', onClick: this.onMenuItemClicked},
+                        { id: "mnui_ContentCopy2",  text: 'Duplicates 2'           , onClick: this.onMenuItemClicked},
                     ]
                 },
                 { id: "mnui_History"    , icon: this.$materialIcons.MDI_HISTORY      , text: 'Frequently contacted', description: "Descrição também." },

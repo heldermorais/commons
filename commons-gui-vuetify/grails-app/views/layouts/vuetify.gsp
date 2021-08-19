@@ -44,6 +44,26 @@
         display: none;
     }
 
+    .fixed {
+        position: fixed;
+    }
+
+    .v-application--is-ltr .v-list-item__action:first-child, .v-application--is-ltr .v-list-item__icon:first-child{
+        margin-right: 5px;
+    }
+
+    .v-application--is-ltr .v-list--dense.v-list--nav .v-list-group--no-action > .v-list-group__items > .v-list-item{
+        padding-left: 32px;
+    }
+
+    .v-list--dense .v-list-item, .v-list-item--dense{
+        min-height: 24px;
+    }
+
+    .v-list-item__action, .v-list-item__avatar, .v-list-item__icon{
+        min-width: 16px;
+    }
+
     </style>
 
     <title><g:layoutTitle default="Grails & Vuetify"/></title>

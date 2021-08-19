@@ -67,7 +67,8 @@ Vue.component('gvue-sidebar', {
                   <v-list-group
                     v-if="item.subitems"
                     :value="false"
-                    :prepend-icon="item.icon"                    
+                    :prepend-icon="item.icon"
+                    no-action                    
                   >
                     <template v-slot:activator>
                       <v-list-item-content>
@@ -82,12 +83,12 @@ Vue.component('gvue-sidebar', {
                         @click="menuItemClicked(subitem)"
                         link
                     >
-                      <v-list-item-icon v-if="subitem.icon">
-                        <v-icon v-text="subitem.icon"></v-icon>
+
+                      <v-list-item-icon>
+                        <v-icon v-text="subitem.icon? subitem.icon : $materialIcons.MDI_CIRCLE_MEDIUM" small></v-icon>
                       </v-list-item-icon>
-                    
                       <v-list-item-content>                      
-                        <v-list-item-subtitle v-text="subitem.text"></v-list-item-subtitle>
+                        <v-list-item-title>{{subitem.text}}</v-list-item-title>
                         <v-list-item-subtitle v-if="(subitem.description)&&(showItemDescriptions)" v-text="subitem.description" class="caption"></v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
@@ -133,7 +134,7 @@ Vue.component('gvue-sidebar', {
 
         width: {
             type: Number,
-            default: 350
+            default: 256
         },
     },
 
