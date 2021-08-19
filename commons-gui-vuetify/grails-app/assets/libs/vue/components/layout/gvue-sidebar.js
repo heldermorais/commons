@@ -82,7 +82,7 @@ Vue.component('gvue-sidebar', {
                         @click="menuItemClicked(subitem)"
                         link
                     >
-                      <v-list-item-icon>
+                      <v-list-item-icon v-if="subitem.icon">
                         <v-icon v-text="subitem.icon"></v-icon>
                       </v-list-item-icon>
                     
@@ -101,7 +101,7 @@ Vue.component('gvue-sidebar', {
                         @click="menuItemClicked(item)"
                         link
                   >
-                      <v-list-item-icon>
+                      <v-list-item-icon v-if="item.icon">
                         <v-icon v-text="item.icon"></v-icon>
                       </v-list-item-icon>
                     

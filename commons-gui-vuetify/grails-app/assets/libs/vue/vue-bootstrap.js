@@ -2,6 +2,7 @@
 console.debug("On vue-bootstrap1.js")
 
 //= require vue/plugins/main-constants.js
+//= require vue/plugins/material-icons.js
 
 //= require vue/plugins/VueSimpleStore2.js
 //= require vue/plugins/EventBus.js

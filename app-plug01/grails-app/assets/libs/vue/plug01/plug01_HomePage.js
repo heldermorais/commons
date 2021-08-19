@@ -235,13 +235,13 @@ Vue.component('plug01-homepage', {
         var menu2 = {
             title: "Este registro",
             items: [
-                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Servidor' },
-                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Benefício' },
-                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Tempo de Contribuição' },
-                { id: "mnui_servidor"  , icon: 'mdi-account-supervisor '    , text: 'Serviço Público' },
-                { id: "mnui_servidor"  , icon: 'mdi-currency-usd  '    , text: 'Proventos' },
-                { id: "mnui_servidor"  , icon: 'mdi-playlist-check '    , text: 'Demostrativo de Proventos' },
-                { id: "mnui_servidor"  , icon: 'mdi-paperclip  '    , text: 'Arquivos & Docs' },
+                { id: "mnui_servidor"  ,  text: ' • Servidor' },
+                { id: "mnui_servidor"  ,  text: ' • Benefício' },
+                { id: "mnui_servidor"  ,  text: ' • Tempo de Contribuição' },
+                { id: "mnui_servidor"  ,  text: ' • Serviço Público' },
+                { id: "mnui_servidor"  ,  text: ' • Proventos' },
+                { id: "mnui_servidor"  ,  text: ' • Demostrativo de Proventos' },
+                { id: "mnui_servidor"  ,  text: ' • Arquivos & Docs' },
             ],
         };
 
@@ -251,15 +251,22 @@ Vue.component('plug01-homepage', {
         var menu1 = {
             title: "Menu Principal",
             items: [
-                { id: "mnui_Contacts"   , icon: 'mdi-contacts'     , text: 'Contacts', description: "Esta é a descrição do menu...",
+                { id: "mnui_Contacts"   , icon: this.$materialIcons.MDI_CONTACTS     , text: 'Contacts', description: "Esta é a descrição do menu...",
                     subitems:[
-                        { id: "mnui_Contacts2"   , icon: 'mdi-contacts'     , text: 'Contacts 2'             , onClick: this.onMenuItemClicked},
-                        { id: "mnui_History2"    , icon: 'mdi-history'      , text: 'Frequently contacted 2 ', onClick: this.onMenuItemClicked},
-                        { id: "mnui_ContentCopy2", icon: 'mdi-content-copy' , text: 'Duplicates 2'           , onClick: this.onMenuItemClicked},
+                        { id: "mnui_servidor1"  ,  text: ' • Servidor' },
+                        { id: "mnui_servidor2"  ,  text: ' • Benefício' },
+                        { id: "mnui_servidor3"  ,  text: ' • Tempo de Contribuição' },
+                        { id: "mnui_servidor4"  ,  text: ' • Serviço Público' },
+                        { id: "mnui_servidor5"  ,  text: ' • Proventos' },
+                        { id: "mnui_servidor6"  ,  text: ' • Demostrativo de Proventos' },
+                        { id: "mnui_servidor7"  ,  text: ' • Arquivos & Docs' },
+                        { id: "mnui_Contacts2"   ,  text: ' • Contacts 2'             , onClick: this.onMenuItemClicked},
+                        { id: "mnui_History2"    ,  text: ' • Frequently contacted 2 ', onClick: this.onMenuItemClicked},
+                        { id: "mnui_ContentCopy2",  text: ' • Duplicates 2'           , onClick: this.onMenuItemClicked},
                     ]
                 },
-                { id: "mnui_History"    , icon: 'mdi-history'      , text: 'Frequently contacted', description: "Descrição também." },
-                { id: "mnui_ContentCopy", icon: 'mdi-content-copy' , text: 'Duplicates' , onClick: this.onMenuItemClicked},
+                { id: "mnui_History"    , icon: this.$materialIcons.MDI_HISTORY      , text: 'Frequently contacted', description: "Descrição também." },
+                { id: "mnui_ContentCopy", icon: this.$materialIcons.MDI_CONTENT_COPY , text: 'Duplicates' , onClick: this.onMenuItemClicked},
             ],
         };
 

@@ -25,7 +25,7 @@ const MainConstants = {
         //     ...
         // })
 
-        Vue.prototype.$constants = {
+        Vue.prototype.$constants = Object.freeze({
 
             events: {
                 app: {
@@ -52,7 +52,7 @@ const MainConstants = {
                 },
             },
 
-        };
+        });
 
         console.log("MainConstants.install - END");
     }
