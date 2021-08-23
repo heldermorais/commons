@@ -1,5 +1,6 @@
 //import Vue from 'vue';
 
+
 const EventBus = {
     install: function (Vue, options) {
         console.log("EventBus.install - BEGIN");

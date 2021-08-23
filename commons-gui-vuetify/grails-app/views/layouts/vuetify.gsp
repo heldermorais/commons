@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css"  />
 
-
     <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js" ></script>
     <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js" ></script>
 

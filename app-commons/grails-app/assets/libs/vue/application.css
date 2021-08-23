@@ -13,3 +13,7 @@
 /*.v-list-item__action, .v-list-item__avatar, .v-list-item__icon{*/
 /*    min-width: 16px;*/
 /*}*/
+
+.v-application ol, .v-application ul{
+    padding-left: 16px;
+}

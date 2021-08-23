@@ -17,7 +17,10 @@ class Plug01Controller {
     def index() {
 
         //use renderVueComponent para renderizar um único componente na página ( sem props nem nada )
-        renderVueComponent("plug01-homepage", "vue/plug01/plug01_HomePage.js")
+        HashMap model = new HashMap()
+        model.put("Slasse", "Plugin01Controller")
+
+        renderVueComponent("plug01-homepage", "vue/plug01/plug01_HomePage.js", model)
 
     }
 

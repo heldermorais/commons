@@ -11,7 +11,13 @@
 
 <body>
 
-<${vueComponentName}></${vueComponentName}>
+
+<g:applyCodec encodeAs="none">
+
+  <${vueComponentName} controller="${controllerName?controllerName:''}" action="${actionName?actionName:''}"></${vueComponentName}>
+
+</g:applyCodec>
+
 
 </body>
 </html>

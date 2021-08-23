@@ -28,6 +28,8 @@ trait VueRenderer extends Controller {
 
         model.put("vueComponentName", vueComponentName)
         model.put("vueComponentPath", vueComponentPath)
+        model.put("backendModel", model)
+
 
         return render(view: templatePath, model: model)
 

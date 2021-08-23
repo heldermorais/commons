@@ -1,0 +1,12 @@
+import app.plug01.Dessert
+//
+//model {
+//    List<Dessert> dessertList
+//}
+//json g.render(template:"dessert", model:[dessert:dessertList])
+
+
+model {
+    List<Dessert> dessertList = []
+}
+json tmpl.dessert(dessertList)

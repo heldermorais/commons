@@ -136,6 +136,7 @@ Vue.component('gvue-sidebar', {
             type: Number,
             default: 256
         },
+
     },
 
     data() {

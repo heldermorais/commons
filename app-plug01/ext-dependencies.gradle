@@ -1,3 +1,6 @@
+dependencies {
+    compile "org.grails.plugins:views-json-templates:2.0.4"
+}
 
 grails{
     plugins {
