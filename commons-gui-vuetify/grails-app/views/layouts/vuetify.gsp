@@ -22,6 +22,7 @@
 
     <script src="https://unpkg.com/wildcard-match@5.1.2/build/index.umd.js"></script>
 
+
     <asset:stylesheet src="vue/application.css"/>
 
 
@@ -172,7 +173,12 @@
 
     var main_vue_app = new Vue({
         el: '#app',
-        vuetify: new Vuetify(),
+        vuetify: new Vuetify({
+            lang: {
+                locales: { 'br' : vuetify_i18n_br } ,
+                current: 'br',
+            },
+        }),
         router,
         data: function (){
             return {

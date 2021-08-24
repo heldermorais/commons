@@ -24,9 +24,9 @@ Vue.component('plug01-homepage', {
             <v-toolbar-title>Cafe Badilico</v-toolbar-title>
             <v-spacer></v-spacer>
 
-            <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>                      
+<!--            <v-btn icon>-->
+<!--                <v-icon>mdi-magnify</v-icon>-->
+<!--            </v-btn>                      -->
                        
             <v-menu offset-y bottom left>
               <template v-slot:activator="{ on, attrs }">
@@ -46,10 +46,10 @@ Vue.component('plug01-homepage', {
                     <v-list-item v-else>
             
                     <v-list-item-icon v-if="item.icon">
-                        <v-icon v-text="item.icon"></v-icon>
+                        <v-icon small v-text="item.icon"></v-icon>
                     </v-list-item-icon>
                     <v-list-item-content v-text="item.text">
-                      <v-list-item-title v-text="item.text"></v-list-item-title>
+                      <v-list-item-subtitle v-text="item.text" class="text-caption"></v-list-item-subtitle>
                     </v-list-item-content>
         
                     </v-list-item>
@@ -66,7 +66,7 @@ Vue.component('plug01-homepage', {
         </v-card-subtitle>        
                   
         <v-card-text>
-           <plug01-datatable :rows="dataTable.rows" :headers="dataTable.headers"></plug01-datatable>
+           <plug01-datatable apiEndpoint="dessert.api" v-on:click:row="onDatatableRowClicked"></plug01-datatable>
         </v-card-text>                  
       </v-card>                   
     </v-container>
@@ -298,6 +298,10 @@ Vue.component('plug01-homepage', {
             console.warn("SpeedDial foi clicado Clicked !", item)
         },
 
+
+        onDatatableRowClicked: function (item, options) {
+            console.warn("Linha do datatable clicada...", item)
+        },
 
         reserve() {
             this.loading = true

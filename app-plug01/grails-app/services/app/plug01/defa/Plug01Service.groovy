@@ -1,4 +1,4 @@
-package app.plug01
+package app.plug01.defa
 
 import grails.gorm.transactions.Transactional
 import groovy.util.logging.Slf4j

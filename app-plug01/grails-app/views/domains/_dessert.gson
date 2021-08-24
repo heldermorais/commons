@@ -1,0 +1,15 @@
+import app.plug01.Dessert
+
+model {
+    Dessert dessert
+}
+json {
+    id       dessert.id
+    name     dessert.name
+    calories dessert.calories
+    fat      dessert.fat
+    carbs    dessert.carbs
+    protein  dessert.protein
+    iron     dessert.iron
+    version  dessert.version
+}

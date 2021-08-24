@@ -1,15 +1,15 @@
-package app.plug01
+package app.plug01.defa
 
 import groovy.util.logging.Slf4j
 
 
 @Slf4j
-class Plug01Controller {
+class DessertPageController {
 
 
     protected Plug01Service plug01Service
 
-    Plug01Controller(Plug01Service plug01Service) {
+    DessertPageController(Plug01Service plug01Service) {
         this.plug01Service = plug01Service
     }
 

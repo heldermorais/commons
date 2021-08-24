@@ -8,7 +8,7 @@ import grails.artefact.Controller
  *
  * {@see VueRendererInjector}
  */
-trait VueRenderer extends Controller {
+trait VueRenderer implements Controller, VueDatatableRenderer {
 
     /**
      * Renderiza um ÚNICO componente VueJs (escrito em javascript) em uma página GSP, de acordo com um template

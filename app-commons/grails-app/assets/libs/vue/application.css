@@ -17,3 +17,15 @@
 .v-application ol, .v-application ul{
     padding-left: 16px;
 }
+
+
+.v-data-table__wrapper > table > tbody > tr {
+    cursor: pointer;
+}
+
+.theme--light.v-data-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, .03);
+}
+.theme--dark.v-data-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, .5);
+}

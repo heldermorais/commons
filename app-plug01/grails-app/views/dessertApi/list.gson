@@ -9,4 +9,6 @@ import app.plug01.Dessert
 model {
     List<Dessert> dessertList = []
 }
-json tmpl.dessert(dessertList)
+json.dessertList {
+    rows tmpl."/domains/dessert"(dessertList)
+}

@@ -1,5 +1,6 @@
 package app.plug01
 
+import app.plug01.defa.Plug01Service
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
