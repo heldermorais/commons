@@ -19,3 +19,4 @@ include 'commons-gui', 'commons-gui-vuetify'
 
 include 'app-teste'
 include 'my-component-library'
+

@@ -10,6 +10,9 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
 import static org.springframework.http.HttpStatus.OK
 
+
+
+
 class DessertApiController implements VueDatatableRenderer {
 
 
@@ -68,6 +71,7 @@ class DessertApiController implements VueDatatableRenderer {
 
 
     def delete(Long id) {
+
         if (id == null) {
             notFound()
             return
@@ -75,6 +79,7 @@ class DessertApiController implements VueDatatableRenderer {
 
 
         try {
+
             Dessert dessert = Dessert.get(id)
 
             if(dessert != null){
@@ -82,6 +87,7 @@ class DessertApiController implements VueDatatableRenderer {
             }else{
                 throw new RuntimeException("Operação não completada.")
             }
+
         } catch (ValidationException e) {
             respond dessert.errors, [status: NOT_ACCEPTABLE]
             return

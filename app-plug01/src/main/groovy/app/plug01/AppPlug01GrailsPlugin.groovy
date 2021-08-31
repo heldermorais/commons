@@ -25,6 +25,7 @@ Brief summary/description of the plugin.
 
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/app-plug01"
+    List loadAfter = ['commonsGuiVuetify']
 
     // Extra (optional) plugin metadata
 

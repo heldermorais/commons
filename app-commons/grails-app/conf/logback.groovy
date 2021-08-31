@@ -36,5 +36,8 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 root(ERROR, ['STDOUT'])
 
+logger 'grails.boot',DEBUG,['STDOUT'],false
+
+
 logger 'commons',DEBUG,['STDOUT'],false
 logger 'app',DEBUG,['STDOUT'],false
