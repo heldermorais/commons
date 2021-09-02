@@ -1,6 +1,6 @@
 include 'app-commons','app-plug01'
 
-include 'commons-autoconfig'
+include 'commons-autoconfig','commons-database-utils'
 
 include 'commons-springsec'
 

@@ -1,4 +1,4 @@
-package app.commons
+package commons.database.utils
 
 class UrlMappings {
 
@@ -10,10 +10,7 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
-
-        "/vue/apiHello.json"(controller: 'hello', action:"apiHello" )
-
         "500"(view:'/error')
-        //"404"(view:'/notFound')
+        "404"(view:'/notFound')
     }
 }

@@ -20,11 +20,13 @@ class UrlMappings {
         "/dessert.api/create" (controller: 'dessertApi' , action: "create")
         "/dessert.api/delete" (controller: 'dessertApi' , action: "delete")
 
+        "/dessert.api/notHere" (controller: 'dessertApi' , action: "notHere")
+
 
 
 
         "/"   (view:"/index")
         "500" (view:'/error')
-        "404" (view:'/notFound')
+        //"404" (view:'/notFound')
     }
 }

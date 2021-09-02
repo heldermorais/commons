@@ -1,0 +1,8 @@
+
+grails{
+    plugins {
+
+        compile project(':commons-autoconfig')
+
+    }
+}

@@ -1,5 +1,6 @@
 package app.plug01
 
+import app.plug01.defa.Dessert3DAOService
 import commons.autorun.AbstractAutorunService
 import grails.gorm.transactions.Transactional
 import groovy.util.logging.Slf4j
@@ -8,6 +9,8 @@ import org.springframework.boot.ApplicationArguments
 @Transactional
 @Slf4j
 class AutorunDessertService  extends AbstractAutorunService {
+
+
 
     @Override
     void run(ApplicationArguments args) throws Exception {
@@ -22,6 +25,7 @@ class AutorunDessertService  extends AbstractAutorunService {
                     iron: 45.8
             )
             dess1.save()
+            log.debug " ..... dessert: ${dess1}"
         }
         log.debug "${this.getOrder()  - HIGHEST_PRECEDENCE}. AutorunDessertService.run - END"
     }

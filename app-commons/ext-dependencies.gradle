@@ -4,6 +4,7 @@ dependencies {
 
 grails{
     plugins {
+        compile project(':commons-database-utils')
 
         compile project(':commons-gui-vuetify')
         compile project(':commons-springsec')
