@@ -10,8 +10,6 @@ import org.springframework.boot.ApplicationArguments
 @Slf4j
 class AutorunDessertService  extends AbstractAutorunService {
 
-
-
     @Override
     void run(ApplicationArguments args) throws Exception {
         log.debug "${this.getOrder()  - HIGHEST_PRECEDENCE}. AutorunDessertService.run - BEGIN"

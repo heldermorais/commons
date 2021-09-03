@@ -1,21 +1,35 @@
 package app.plug01
 
+import app.plug01.defa.usecases.DessertDAOService
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
 class DessertController {
 
-    DessertService dessertService
+    //DessertService dessertService
+
+    protected Dessert2DAOService dessertService
+
+
+    public DessertController (Dessert2DAOService dessert2DAOService){
+        this.dessertService = dessert2DAOService
+    }
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond dessertService.list(params), model:[dessertCount: dessertService.count()]
+
+        //Dessert dss = dessertService.findDessert( "Zzz" )
+        Dessert dss = dessertService.findLikeDessert("Z" )
+
+        println ("${dss}")
+
+        respond dessertService.list(params), model:[dessertCount: 200]
     }
 
     def show(Long id) {
-        respond dessertService.get(id)
+        respond dessertService.getById(id)
     }
 
     def create() {
@@ -45,7 +59,7 @@ class DessertController {
     }
 
     def edit(Long id) {
-        respond dessertService.get(id)
+        respond dessertService.getById(id)
     }
 
     def update(Dessert dessert) {

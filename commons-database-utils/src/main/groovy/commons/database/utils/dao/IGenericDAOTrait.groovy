@@ -41,7 +41,7 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
             //println(r)
             def resolved = r.resolve()
             //println(resolved.getName())
-            if(r.resolve().getName().equals(IGenericDAOTrait.class.name)){
+            if(r.resolve().getName().equals("commons.database.utils.dao.IGenericDAOTrait")){
                 def targetClass = r.getGeneric(0).resolve()
                 //println(targetClass)
 
@@ -56,6 +56,8 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
 
 
 
+
+
     /**
      *
      * @param id
@@ -64,6 +66,8 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
     T getById(Serializable id){
         return this.referencedDomainClass.get(id)
     }
+
+
 
     /**
      *
@@ -74,11 +78,12 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
         return this.referencedDomainClass.list(args)
     }
 
+
+
     /**
      *
      * @param id
      */
-    @Transactional
     void delete(Serializable id){
         T target = this.referencedDomainClass.get(id)
         if(target != null){
@@ -86,12 +91,13 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
         }
     }
 
+
+
     /**
      *
      * @param target
      * @return
      */
-    @Transactional
     T save(T target){
 
         if(target.getClass().isAssignableFrom(this.referencedDomainClass)){
