@@ -126,6 +126,9 @@
         function(config) {
             // Do something before request is sent
             NProgress.start();
+
+            new Vue().$eventBus.$emit("AXIOS_REQUEST", {running: true});
+
             return config;
         },
         function(error) {
@@ -138,11 +141,13 @@
     // Add a response interceptor
     axios.interceptors.response.use(
         function(response) {
+            new Vue().$eventBus.$emit("AXIOS_REQUEST", {running: false});
             NProgress.done();
             return response;
         },
         function(error) {
             // Do something with response error
+            new Vue().$eventBus.$emit("AXIOS_REQUEST", {running: false});
             NProgress.done();
             //console.error(error);
             return Promise.reject(error);

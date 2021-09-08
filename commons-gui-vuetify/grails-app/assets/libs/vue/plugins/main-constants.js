@@ -50,6 +50,9 @@ const MainConstants = {
                     DONE  : "app:alert:done",
                     CLOSE : "app:alert:done",
                 },
+                axios: {
+                    REQUEST: "AXIOS_REQUEST",
+                }
             },
 
         });

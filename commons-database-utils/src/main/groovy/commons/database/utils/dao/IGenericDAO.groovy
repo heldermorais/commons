@@ -8,7 +8,7 @@ import org.springframework.core.ResolvableType
 
 
 @Slf4j
-trait IGenericDAOTrait<T> implements GrailsApplicationAware {
+trait IGenericDAO<T> implements GrailsApplicationAware {
 
 
 
@@ -41,7 +41,7 @@ trait IGenericDAOTrait<T> implements GrailsApplicationAware {
             //println(r)
             def resolved = r.resolve()
             //println(resolved.getName())
-            if(r.resolve().getName().equals("commons.database.utils.dao.IGenericDAOTrait")){
+            if(r.resolve().getName().equals("commons.database.utils.dao.IGenericDAO")){
                 def targetClass = r.getGeneric(0).resolve()
                 //println(targetClass)
 

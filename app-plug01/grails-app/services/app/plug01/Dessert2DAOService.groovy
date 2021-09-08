@@ -1,12 +1,11 @@
 package app.plug01
 
 
-import commons.database.utils.dao.IGenericDAOTrait
-import grails.gorm.services.Service
+import commons.database.utils.dao.IGenericDAO
 import grails.gorm.transactions.Transactional
 
 @Transactional
-class Dessert2DAOService implements IGenericDAOTrait<Dessert> {
+class Dessert2DAOService implements IGenericDAO<Dessert> {
 
     protected DessertHelperService dessertHelperService
 

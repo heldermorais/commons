@@ -29,7 +29,7 @@ const EventBus = {
         var _eventBus = new Vue({
             data: function(){
                 return {
-                    oldON
+
                 }
             },
             created(){

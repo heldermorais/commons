@@ -12,6 +12,7 @@ console.debug("On vue-bootstrap1.js")
 //= require vue/components/notification/Notification.js
 //= require vue/components/layout/CustomLayout.js
 
+//= require vue/components/card/gvue-content.js
 
 //= require_self
 

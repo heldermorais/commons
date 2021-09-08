@@ -50,6 +50,8 @@ class DessertApiController {
        params.max = Math.min((params.max ? params.max : 10), 100)
        def lista = dessertDAOService.list( params )
 
+       Thread.sleep(2000)
+
        respond lista
 
     }

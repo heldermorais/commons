@@ -5,15 +5,68 @@ Vue.component('plug01-homepage', {
     template: `
     <v-container fluid>
 
-      <gvue-content :breadCrumbItems="breadCrumbItems" :toolbarMenuItems="toolbarMenuItems">
+      <v-card
+        :loading="loading"       
+        class="mx-auto"         
+      >
+      
+        <template slot="progress">
+          <v-progress-linear
+            color="deep-purple"
+            height="10"
+            indeterminate
+          ></v-progress-linear>
+        </template>
+
+        <v-breadcrumbs :items="breadCrumbItems" class="pb-0"></v-breadcrumbs>       
         
-        <template slot="title">Home Page</template>
-        <template slot="subtitle">Este é o formulário .</template>
-        
-        <plug01-datatable apiEndpoint="dessert.api" v-on:click:row="onDatatableRowClicked"></plug01-datatable>
+        <v-toolbar dense flat>
+                    
+            <v-toolbar-title>Cafe Badilico</v-toolbar-title>
+            <v-spacer></v-spacer>
+                      
+            <v-menu offset-y bottom left v-if="toolbarMenuItems.length > 0">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn          
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </template>
               
-      </gvue-content>   
-                       
+              <v-list nav dense>
+                <v-list-item-group>
+                  <template v-for="(item, index) in toolbarMenuItems">
+                    <v-divider v-if="item.divider"></v-divider>
+                    <v-list-item v-else>
+            
+                    <v-list-item-icon v-if="item.icon">
+                        <v-icon small v-text="item.icon"></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content v-text="item.text">
+                      <v-list-item-subtitle v-text="item.text" class="text-caption"></v-list-item-subtitle>
+                    </v-list-item-content>
+        
+                    </v-list-item>
+                  </template>
+                </v-list-item-group>                  
+              </v-list>
+            </v-menu>
+            
+        </v-toolbar>    
+        
+        <v-card-subtitle class="py-0">
+           <p>$ • Italian, Cafe
+           <br/>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
+           </p>
+        </v-card-subtitle>        
+                  
+        <v-card-text>
+           <plug01-datatable apiEndpoint="dessert.api" v-on:click:row="onDatatableRowClicked"></plug01-datatable>
+        </v-card-text>                  
+      </v-card>                   
     </v-container>
     
   `,
@@ -38,15 +91,15 @@ Vue.component('plug01-homepage', {
             ],
 
             toolbarMenuItems: [
-                {text: 'Servidor', icon: 'mdi-folder'                   , onClick: this.onMenuItemClicked},
+                {text: 'Servidor', icon: 'mdi-folder'},
                 {divider: true},
-                {text: 'Benefício', icon: 'mdi-account-multiple'        , onClick: this.onMenuItemClicked},
-                {text: 'Tempo de Contribuição', icon: 'mdi-star'        , onClick: this.onMenuItemClicked},
-                {text: 'Serviço Público', icon: 'mdi-history'           , onClick: this.onMenuItemClicked},
-                {text: 'Proventos', icon: 'mdi-check-circle'            , onClick: this.onMenuItemClicked},
-                {text: 'Demonstrativo de Proventos', icon: 'mdi-upload' , onClick: this.onMenuItemClicked},
+                {text: 'Benefício', icon: 'mdi-account-multiple'},
+                {text: 'Tempo de Contribuição', icon: 'mdi-star'},
+                {text: 'Serviço Público', icon: 'mdi-history'},
+                {text: 'Proventos', icon: 'mdi-check-circle'},
+                {text: 'Demonstrativo de Proventos', icon: 'mdi-upload'},
                 {divider: true},
-                {text: 'Arquivos & Docs', icon: 'mdi-cloud-upload'      , onClick: this.onMenuItemClicked},
+                {text: 'Arquivos & Docs', icon: 'mdi-cloud-upload'},
             ],
 
             dataTable: {
@@ -181,8 +234,18 @@ Vue.component('plug01-homepage', {
 
         console.debug('plug01-homepage.created() - BEGIN');
 
-        console.debug('plug01-homepage.created() - END');
+        // this.$addStoreProperty ("sidebarItems", { values: [] });
 
+        // this.apiSidebarMenu = this.$axiosServices.createNew(this.$axios, {
+        //     getItems: 'get /api-gui/sidebarMenu/index.json'
+        // })
+
+
+        this.$eventBus.$on(this.$constants.events.app.STARTED  , this.onAppStart);
+
+        this.$eventBus.$on(this.$constants.events.axios.REQUEST, this.onAxiosRequest);
+
+        console.debug('plug01-homepage.created() - END');
     },
 
     mounted: function () {
@@ -212,6 +275,18 @@ Vue.component('plug01-homepage', {
 
     methods: {
 
+        onAppStart: function () {
+            console.warn("App iniciada.... ja sei!")
+        },
+
+        onMenuItemClicked: function (item) {
+            console.warn("MenuItem foi clicado !", item)
+        },
+
+        onSpeedDialClicked: function (item) {
+            console.warn("SpeedDial foi clicado Clicked !", item)
+        },
+
 
         onDatatableRowClicked: function (item, options) {
             console.warn("Linha do datatable clicada...", item)
@@ -224,8 +299,10 @@ Vue.component('plug01-homepage', {
             //setTimeout(() => (this.loading = false), 2000)
         },
 
-        onMenuItemClicked: function (item) {
-            console.warn("on Home Page => MenuItem foi clicado !", item)
+        reserve() {
+            //this.loading = true
+
+            //setTimeout(() => (this.loading = false), 2000)
         },
 
     }
