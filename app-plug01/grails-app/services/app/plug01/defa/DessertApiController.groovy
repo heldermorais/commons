@@ -5,11 +5,11 @@ import app.plug01.defa.usecases.DessertDAOService
 import grails.validation.ValidationException
 import org.springframework.http.HttpStatus
 
-import static org.springframework.http.HttpStatus.CREATED
+
 import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
-import static org.springframework.http.HttpStatus.OK
+
 
 
 /**
@@ -37,7 +37,10 @@ class DessertApiController {
      * @return
      */
     def index() {
-        redirect action: "list"
+
+        dessertDAOService.teste()
+
+        forward action: "list"
     }
 
 
@@ -47,12 +50,16 @@ class DessertApiController {
      */
     def list() {
 
-       params.max = Math.min((params.max ? params.max : 10), 100)
-       def lista = dessertDAOService.list( params )
+       params.max = Math.min((params.max ? Integer.parseInt(params.max) : 10), 100)
+
+       dessertDAOService.teste()
+
+       List<Dessert> lista = dessertDAOService.list( params )
+       Long count          = dessertDAOService.count()
 
        Thread.sleep(2000)
 
-       respond lista
+       respond lista, model:[count: count]
 
     }
 

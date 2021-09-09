@@ -13,6 +13,8 @@ Vue.component('plug01-datatable', {
               :no-results-text="noResultsLabel"
               :dense="($vuetify.breakpoint.mdAndUp)||(dense)"
               v-on:click:row="onRowClick"
+              
+              
         >
           <template v-slot:top>
             <v-row >
@@ -73,6 +75,12 @@ Vue.component('plug01-datatable', {
             type: Boolean,
             default: false
         },
+
+        headers: {
+            type: Array,
+            default: []
+        },
+
     },
 
     data () {
@@ -96,27 +104,10 @@ Vue.component('plug01-datatable', {
                     iron: '1%',
                 },
             ],
-            headers: [
-                {
-                    text    : 'Dessert (100g serving)',
-                    align   : 'start',
-                    sortable: false,
-                    value   : 'name',
-                },
-                {
-                    text    : 'Calories',
-                    value   : 'calories',
-                    filter  : value => {
-                        if (!this.calories) return true
+            totalRows: 200,
 
-                        return value < parseInt(this.calories)
-                    },
-                },
-                { text: 'Fat (g)'    , value: 'fat' },
-                { text: 'Carbs (g)'  , value: 'carbs' },
-                { text: 'Protein (g)', value: 'protein' },
-                { text: 'Iron (%)'   , value: 'iron' },
-            ],
+            rowsPerPage: 10,
+            pageNumber : 1
         }
     },
     computed: {
@@ -155,7 +146,7 @@ Vue.component('plug01-datatable', {
     mounted: function () {
         console.debug('plug01-datatable.mounted() - BEGIN');
 
-        axios.get(this.apiEndpoint).then (this.onLoadData);
+        axios.get(this.apiEndpoint, { params: { max: this.rowsPerPage } }).then (this.onLoadData);
 
         console.debug('plug01-datatable.mounted() - END');
     },
@@ -180,6 +171,23 @@ Vue.component('plug01-datatable', {
                 typeof value === 'string' &&
                 value.toString().toLocaleUpperCase().indexOf(search) !== -1
         },
+
+        onDatatableChanged: function(options){
+
+            console.warn(options);
+
+            this.rowsPerPage = options.itemsPerPage;
+            this.pageNumber  = options.page;
+
+            var offset = 0
+            if(this.pageNumber > 1){
+                offset = ((this.pageNumber-1)*this.rowsPerPage)
+            }
+
+            axios.get(this.apiEndpoint+"?max="+this.rowsPerPage+"&offset="+offset).then (this.onLoadData);
+            //this.$emit("click:row",{item: item, options: options})
+        },
+
 
 
     },

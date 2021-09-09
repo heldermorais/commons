@@ -23,6 +23,14 @@
     <script src="https://unpkg.com/wildcard-match@5.1.2/build/index.umd.js"></script>
 
 
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.1/dist/styles.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.1/dist/component.min.js"></script>
+
+
     <asset:stylesheet src="vue/application.css"/>
 
 

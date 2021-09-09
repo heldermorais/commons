@@ -14,7 +14,7 @@ Vue.component('gvue-content', {
           ></v-progress-linear>
         </template>
 
-        <v-breadcrumbs :items="breadCrumbItems" class="pb-0"></v-breadcrumbs>       
+        <v-breadcrumbs :items="breadCrumbItems" class="pb-0" v-if="breadCrumbItems.length > 0"></v-breadcrumbs>       
         
         <v-toolbar dense flat>
                     
@@ -93,12 +93,12 @@ Vue.component('gvue-content', {
 
         breadCrumbItems: {
             type: Array,
-            required: true
+            default:[],
         },
 
         toolbarMenuItems: {
             type: Array,
-            required: true
+            default:[],
         },
 
     },
