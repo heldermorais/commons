@@ -16,14 +16,15 @@ Vue.component('plug01-homepage', {
         
         <div>
         
-        <plug01-visualfilter></plug01-visualfilter>
         
         <plug01-datatable 
                apiEndpoint="dessert.api" 
-               v-on:click:row="onDatatableRowClicked"
+               @click:row="onDatatableRowClicked"
                :headers="dataTable.headers"
                >
         </plug01-datatable>
+        
+        
         
         </div> 
       </gvue-content>   
@@ -115,12 +116,16 @@ Vue.component('plug01-homepage', {
 
         console.debug('plug01-homepage.created() - BEGIN');
 
+        this.$router.addRoute({ path: '/', component: plug01Datatable });
+
         console.debug('plug01-homepage.created() - END');
 
     },
 
     mounted: function () {
         console.debug('plug01-homepage.mounted() - BEGIN');
+
+
 
         var menu1 = {
             title: "Menu Principal",

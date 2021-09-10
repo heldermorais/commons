@@ -1,5 +1,5 @@
 
-Vue.component('plug01-datatable', {
+var plug01Datatable = Vue.component('plug01-datatable', {
     template: `
         <v-data-table
               :single-select="singleSelect"
@@ -13,17 +13,19 @@ Vue.component('plug01-datatable', {
               :no-results-text="noResultsLabel"
               :dense="($vuetify.breakpoint.mdAndUp)||(dense)"
               v-on:click:row="onRowClick"
-              
-              
+                            
         >
           <template v-slot:top>
             <v-row >
                 <v-col align="end" class="col-md-4 col-xs-4 offset-md-8">
-                    <v-text-field v-model="search" :label="searchLabel" class="mx-1"
+                    <v-text-field 
+                     v-model="search" 
+                     :label="searchLabel" 
+                     class="mx-1"
                     >
                       <v-icon
                          slot="append"
-                         color="blue"
+                         color="blue"                         
                       >
                          {{searchIcon}}
                       </v-icon>
@@ -164,30 +166,6 @@ Vue.component('plug01-datatable', {
         onRowClick: function(item,options){
           this.$emit("click:row",{item: item, options: options})
         },
-
-        filterOnlyCapsText (value, search, item) {
-            return value != null &&
-                search != null &&
-                typeof value === 'string' &&
-                value.toString().toLocaleUpperCase().indexOf(search) !== -1
-        },
-
-        onDatatableChanged: function(options){
-
-            console.warn(options);
-
-            this.rowsPerPage = options.itemsPerPage;
-            this.pageNumber  = options.page;
-
-            var offset = 0
-            if(this.pageNumber > 1){
-                offset = ((this.pageNumber-1)*this.rowsPerPage)
-            }
-
-            axios.get(this.apiEndpoint+"?max="+this.rowsPerPage+"&offset="+offset).then (this.onLoadData);
-            //this.$emit("click:row",{item: item, options: options})
-        },
-
 
 
     },

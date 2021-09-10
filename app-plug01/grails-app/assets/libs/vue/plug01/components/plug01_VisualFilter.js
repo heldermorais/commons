@@ -5,7 +5,57 @@ Vue.component('plug01-visualfilter', {
       <VueVisualFilter
         :filtering-options="filteringOptions"
         @filter-update="captureFilterUpdate"
-      />
+      >
+      
+         <template #groupTypes="{ groupTypes, group }">
+         
+             <v-col> 
+                       <v-select class="col-2"
+                         v-model="group.groupType"
+                         :items="groupTypes"
+                         label="Seleção"
+                         dense
+                       >
+                       </v-select>
+             </v-col>
+
+         </template>
+    
+    
+        <template #filterAddition="{ filterTypes, addFilter }">
+        
+                       <v-select class="col-2"
+                         :items="filterTypes"
+                         label="Seleção"
+                         dense
+                         @change="addFilter"
+                       >
+                       </v-select>
+        
+        
+<!--          <el-dropdown-->
+<!--            @command="addFilter"-->
+<!--            split-button-->
+<!--            trigger="click"-->
+<!--            type="primary"-->
+<!--            size="mini"-->
+<!--          >-->
+<!--            <i class="el-icon-plus"></i>-->
+<!--            <template #dropdown>-->
+<!--              <el-dropdown-menu>-->
+<!--                <el-dropdown-item-->
+<!--                  v-for="filter in filterTypes"-->
+<!--                  :key="filter"-->
+<!--                  :command="filter"-->
+<!--                >-->
+<!--                  {{ filter }}-->
+<!--                </el-dropdown-item>-->
+<!--              </el-dropdown-menu>-->
+<!--            </template>-->
+<!--          </el-dropdown>-->
+        </template>
+    
+      </VueVisualFilter>
   
     `,
 

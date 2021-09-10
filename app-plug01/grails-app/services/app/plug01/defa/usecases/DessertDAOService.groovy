@@ -24,8 +24,10 @@ abstract class DessertDAOService implements IDessertDAO {
 
         def lista = criteria.list()
 
-        log.debug(lista)
+        log.debug("${lista}")
+
         log.info("teste - END")
+
     }
 
 }
