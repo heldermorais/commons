@@ -4,6 +4,7 @@ dependencies {
 
 grails{
     plugins {
+
         compile project(':commons-database-utils')
 
         compile project(':commons-gui-vuetify')
@@ -13,3 +14,4 @@ grails{
 
     }
 }
+

@@ -105,12 +105,14 @@ tasks.withType(Test) {
 }
 
 
+
 assets {
-    minifyJs = true
+    minifyJs  = true
     minifyCss = true
+
+    //excludes = ['webjars/*'] //Example Exclude GLOB pattern
 
     //from '/vendor/lib'
 }
-
 
 apply from: 'ext-dependencies.gradle'

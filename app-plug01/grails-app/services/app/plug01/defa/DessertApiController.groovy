@@ -38,8 +38,6 @@ class DessertApiController {
      */
     def index() {
 
-        //dessertDAOService.teste()
-
         forward action: "list"
     }
 
@@ -52,8 +50,6 @@ class DessertApiController {
 
        params.offset =  0  // Forçar a carregar a lista do início ( paginação no cliente )
        params.max    = -1  // Forçar a carregar a lista COMPLETA ( paginação no cliente )
-
-       dessertDAOService.teste()
 
        List<Dessert> lista = dessertDAOService.list( params )
        Long count          = dessertDAOService.count()

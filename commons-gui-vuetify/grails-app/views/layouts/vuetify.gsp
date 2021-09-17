@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"/>
+%{--    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">--}%
+    <link href="static/roboto/roboto-family.css" rel="stylesheet">
+%{--    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">--}%
+    <link href="static/material-icons/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <link href="static/vuetify-v2.5.8/vuetify-v2.5.8.min.css" rel="stylesheet"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css"  />
+%{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"  />--}%
 
-    <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js" ></script>
-    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js" ></script>
+    <link rel="stylesheet" href="static/nprogress-0.2.0/nprogress.css"  />
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+%{--    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.4/dist/axios.min.js" ></script>--}%
+    <script src="static/axios-0.21.4/axios.min.js" ></script>
 
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-    <script src="https://unpkg.com/portal-vue@2.1.7"></script>
+    <script src="static/nprogress-0.2.0/nprogress.js" ></script>
 
-    <script src="https://unpkg.com/axios-actions@4.0.2/dist/axios-actions.js"></script>
+    <script src="static/vue-2.6.14/vue.js"></script>
+    <script src="static/vuetify-v2.5.8/vuetify-v2.5.8.min.js"></script>
 
-    <script src="https://unpkg.com/wildcard-match@5.1.2/build/index.umd.js"></script>
+    <script src="static/vue-router-3.5.2/vue-router.min.js"></script>
+    <script src="static/portal-vue-2.1.7/portal-vue.umd.min.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios-actions@4.0.2/dist/axios-actions.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wildcard-match@5.1.2/build/index.umd.js"></script>
+
 
 
     <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.1/dist/styles.css"
+            href="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.2/dist/styles.css"
     />
 
-    <script src="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.1/dist/component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@visual-filter/vue2@1.1.2/dist/component.min.js"></script>
+
+
 
 
     <asset:stylesheet src="vue/application.css"/>
-
 
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>

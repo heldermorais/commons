@@ -93,6 +93,7 @@ bootJar.enabled = false
 
 assets {
     packagePlugin = true
+
 }
 
 
