@@ -10,5 +10,5 @@ model {
     List<Dessert> dessertList = []
 }
 json.dessertList {
-    rows tmpl."/domains/dessert"(dessertList)
+    rows tmpl."dessert"(dessertList)
 }

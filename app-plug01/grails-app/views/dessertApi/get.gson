@@ -3,4 +3,4 @@ import app.plug01.Dessert
 model {
     Dessert dessert
 }
-json tmpl."/domains/dessert"(dessert)
+json tmpl."dessert"(dessert)

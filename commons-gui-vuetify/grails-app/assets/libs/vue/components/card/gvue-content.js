@@ -89,16 +89,18 @@ Vue.component('gvue-content', {
             type: Object
         },
 
-
-
         breadCrumbItems: {
             type: Array,
-            default:[],
+            default: function () {
+                return []
+            }
         },
 
         toolbarMenuItems: {
             type: Array,
-            default:[],
+            default: function () {
+                return []
+            }
         },
 
     },
@@ -106,7 +108,6 @@ Vue.component('gvue-content', {
     created: function () {
 
         console.debug('gvue-content.created() - BEGIN');
-
 
         this.$eventBus.$on(this.$constants.events.axios.REQUEST, this.onAxiosRequest);
 

@@ -2,7 +2,7 @@
 //= require vue/plug01/components/plug01_Datatable.js
 //= require vue/plug01/components/plug01_VisualFilter.js
 
-Vue.use(VueVisualFilter);
+
 
 Vue.component('plug01-homepage', {
     template: `
@@ -18,7 +18,7 @@ Vue.component('plug01-homepage', {
         
         
         <plug01-datatable 
-               apiEndpoint="dessert.api" 
+               apiEndpoint="dessertApi" 
                @click:row="onDatatableRowClicked"
                :headers="dataTable.headers"
                >

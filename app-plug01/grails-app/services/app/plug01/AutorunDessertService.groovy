@@ -1,6 +1,6 @@
 package app.plug01
 
-import app.plug01.defa.Dessert3DAOService
+
 import commons.autorun.AbstractAutorunService
 import grails.gorm.transactions.Transactional
 import groovy.util.logging.Slf4j

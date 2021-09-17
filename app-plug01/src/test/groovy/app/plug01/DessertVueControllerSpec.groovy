@@ -1,9 +1,9 @@
 package app.plug01
 
-import grails.testing.services.ServiceUnitTest
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class Dessert2DAOServiceSpec extends Specification implements ServiceUnitTest<Dessert2DAOService>{
+class DessertVueControllerSpec extends Specification implements ControllerUnitTest<DessertVueController> {
 
     def setup() {
     }

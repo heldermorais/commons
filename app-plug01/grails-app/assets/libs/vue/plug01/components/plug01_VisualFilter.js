@@ -1,4 +1,6 @@
 
+Vue.use(VueVisualFilter);
+
 Vue.component('plug01-visualfilter', {
     template: `
 
